@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Jurídica Inclusiva</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="/css/style-index.css">
+</head>
+<body>
+    <!-- Enlaces de accesibilidad -->
+    <a href="#main-content" class="a11y-skip-link">Saltar al contenido principal</a>
+    
+    <!-- Barra de herramientas de accesibilidad -->
+    <div class="bg-dark py-1 text-center" id="accessibility-bar">
+        <div class="container">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Herramientas de accesibilidad">
+                <button id="increase-text" class="btn btn-outline-light btn-sm" title="Aumentar texto">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+                </button>
+                <button id="decrease-text" class="btn btn-outline-light btn-sm" title="Disminuir texto">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+                </button>
+                <button id="toggle-contrast" class="btn btn-outline-light btn-sm" title="Alto contraste">
+                    <i class="fa fa-adjust"></i>
+                </button>
+                <button id="read-page" class="btn btn-outline-light btn-sm" title="Leer página">
+                    <i class="fa fa-volume-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top shadow-sm border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://ucsc.cl/content/uploads/2024/07/logo_facultad_derecho-01.png" alt="Logo UCSC Facultad de Derecho" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-dark" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#recursos">Recursos</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#testimonios">Testimonios</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#novedades">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="inicio">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">Plataforma de Alfabetización Jurídica en Discapacidad</h1>
+            <p class="lead animate__animated animate__fadeInUp">Un espacio accesible, inclusivo y pedagógico diseñado para facilitar la comprensión de los derechos de las personas con discapacidad en Chile.</p>
+            <div class="mt-4 animate__animated animate__fadeInUp animate__delay-1s">
+                <a href="#recursos" class="btn btn-light btn-lg me-2">Explorar Recursos</a>
+                <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#subscribeModal">Suscribirse</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Sección Estadísticas -->
+        <section class="py-5 bg-white">
+            <div class="container text-center">
+                <h2 class="section-heading">Estadísticas sobre Discapacidad en Chile</h2>
+                <div class="row g-4 mt-3">
+                    <div class="col-md-4">
+                        <div class="counter-box hidden">
+                            <i class="fas fa-users fa-2x mb-3 text-primary"></i>
+                            <p class="animated-counter" data-count="2300000">0</p>
+                            <p>Personas con discapacidad en Chile</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="counter-box hidden">
+                            <i class="fas fa-graduation-cap fa-2x mb-3 text-primary"></i>
+                            <p class="animated-counter" data-count="45">0</p>
+                            <p>% con dificultades para acceder a educación superior</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="counter-box hidden">
+                            <i class="fas fa-balance-scale fa-2x mb-3 text-primary"></i>
+                            <p class="animated-counter" data-count="70">0</p>
+                            <p>% desconoce sus derechos legales</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Por qué esta plataforma -->
+        <section class="py-5 bg-light" id="acerca">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 text-start hidden">
+                        <h2 class="fw-bold text-danger">¿Por qué esta plataforma?</h2>
+                        <p class="lead">En <strong>Plataforma Jurídica Inclusiva</strong>, buscamos acercar la alfabetización legal a todas las personas, especialmente aquellas con discapacidad, mediante recursos adaptados y gratuitos. Queremos ayudarte a comprender tus derechos y aplicarlos en tu vida cotidiana.</p>
+                        <div class="mt-4">
+                            <a href="#recursos" class="btn btn-ucsc me-2">Conocer recursos</a>
+                            <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                <i class="fas fa-play-circle me-2"></i>Ver video explicativo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 hidden">
+                        <img src="https://via.placeholder.com/600x350?text=Inclusi%C3%B3n+Educativa" class="img-fluid rounded shadow" alt="Persona aprendiendo sobre sus derechos">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- A quién va dirigido -->
+        <section class="py-5 bg-white">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 hidden">
+                        <img src="https://via.placeholder.com/600x350?text=Acceso+Justicia" class="img-fluid rounded shadow" alt="Personas accediendo a la justicia">
+                    </div>
+                    <div class="col-lg-6 text-start hidden">
+                        <h2 class="fw-bold text-danger">¿A quién va dirigido?</h2>
+                        <div class="accordion" id="targetAudience">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Estudiantes con discapacidad
+                                    </button>
+                                </h3>
+                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#targetAudience">
+                                    <div class="accordion-body">
+                                        Material adaptado para conocer tus derechos en el contexto educativo y laboral.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Docentes y educadores
+                                    </button>
+                                </h3>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#targetAudience">
+                                    <div class="accordion-body">
+                                        Recursos para implementar educación inclusiva y conocer el marco legal que la respalda.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Familias y cuidadores
+                                    </button>
+                                </h3>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#targetAudience">
+                                    <div class="accordion-body">
+                                        Información sobre beneficios, prestaciones y apoyo legal disponible.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#recursos" class="btn btn-ucsc mt-4">Explorar contenidos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recursos destacados -->
+        <section class="py-5 bg-light" id="recursos">
+            <div class="container">
+                <h2 class="text-center section-heading">Recursos Destacados</h2>
+                
+                <!-- Filtros de recursos -->
+                <div class="text-center mb-4 hidden">
+                    <div class="btn-group" role="group" aria-label="Filtros de recursos">
+                        <button type="button" class="btn btn-outline-secondary active filter-btn" data-filter="all">Todos</button>
+                        <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="visual">Visual</button>
+                        <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="auditivo">Auditivo</button>
+                        <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="interactivo">Interactivo</button>
+                    </div>
+                </div>
+                
+                <div class="row g-4 mt-2">
+                    <div class="col-md-4 resource-item hidden" data-category="visual interactivo">
+                        <div class="card-ucsc p-4 h-100">
+                            <div class="fs-1"><i class="fas fa-file-alt"></i></div>
+                            <h5 class="mt-2">Infografías Interactivas</h5>
+                            <p>Leyes y derechos explicados en lenguaje simple y accesible.</p>
+                            <div class="mt-auto pt-3">
+                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#resourceModal" data-resource="infografias">Ver Ejemplos</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 resource-item hidden" data-category="auditivo">
+                        <div class="card-ucsc p-4 h-100">
+                            <div class="fs-1"><i class="fas fa-headphones"></i></div>
+                            <h5 class="mt-2">Audiolibros Legales</h5>
+                            <p>Contenidos narrados en voz clara y pausada sobre normativa legal.</p>
+                            <div class="mt-auto pt-3">
+                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#resourceModal" data-resource="audio">Escuchar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 resource-item hidden" data-category="interactivo">
+                        <div class="card-ucsc p-4 h-100">
+                            <div class="fs-1"><i class="fas fa-brain"></i></div>
+                            <h5 class="mt-2">Trivias Legales</h5>
+                            <p>Evalúa tus conocimientos sobre derechos y accesibilidad.</p>
+                            <div class="mt-auto pt-3">
+                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#triviaModal">Iniciar Trivia</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 resource-item hidden" data-category="visual auditivo">
+                        <div class="card-ucsc p-4 h-100">
+                            <div class="fs-1"><i class="fas fa-hands"></i></div>
+                            <h5 class="mt-2">Videos con Lengua de Señas</h5>
+                            <p>Explicaciones sobre derechos educativos con interpretación en LSCh.</p>
+                            <div class="mt-auto pt-3">
+                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#resourceModal" data-resource="videos">Ver Videos</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 resource-item hidden" data-category="visual">
+                        <div class="card-ucsc p-4 h-100">
+                            <div class="fs-1"><i class="fas fa-calendar-alt"></i></div>
+                            <h5 class="mt-2">Líneas del Tiempo</h5>
+                            <p>Historia y evolución de los derechos de personas con discapacidad.</p>
+                            <div class="mt-auto pt-3">
+                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#resourceModal" data-resource="lineas">Ver Líneas</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 resource-item hidden" data-category="interactivo">
+                        <div class="card-ucsc p-4 h-100">
+                            <div class="fs-1"><i class="fas fa-book-reader"></i></div>
+                            <h5 class="mt-2">Guías Simplificadas</h5>
+                            <p>Documentos explicativos sobre procesos legales frecuentes.</p>
+                            <div class="mt-auto pt-3">
+                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#resourceModal" data-resource="guias">Ver Guías</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonios -->
+        <section class="py-5 bg-white" id="testimonios">
+            <div class="container">
+                <h2 class="text-center section-heading">Testimonios</h2>
+                <div id="testimonialCarousel" class="carousel slide testimonial-carousel hidden" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="bg-light p-4 rounded shadow text-center">
+                                <img src="https://via.placeholder.com/100" class="rounded-circle mb-3" alt="Javiera Riquelme">
+                                <p class="fw-bold">Javiera Riquelme</p>
+                                <p>"Soy estudiante con discapacidad visual. Esta plataforma me ha ayudado a comprender mis derechos con contenidos en audio accesibles y navegación clara."</p>
+                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#audioTestimonioModal" data-testimonio="javiera">
+                                    <i class="fas fa-volume-up me-2"></i>Escuchar testimonio completo
+                                </button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="bg-light p-4 rounded shadow text-center">
+                                <img src="https://via.placeholder.com/100" class="rounded-circle mb-3" alt="Martín Soto">
+                                <p class="fw-bold">Martín Soto</p>
+                                <p>"Como estudiante con movilidad reducida, acceder a información legal de forma simplificada me ha dado más autonomía y confianza para participar activamente en la universidad."</p>
+                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#audioTestimonioModal" data-testimonio="martin">
+                                    <i class="fas fa-volume-up me-2"></i>Escuchar testimonio completo
+                                </button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="bg-light p-4 rounded shadow text-center">
+                                <img src="https://via.placeholder.com/100" class="rounded-circle mb-3" alt="Carolina Fuentes">
+                                <p class="fw-bold">Carolina Fuentes</p>
+                                <p>"Como docente de derecho, esta plataforma me ha permitido adaptar mis clases y materiales para que sean realmente inclusivos. Mis estudiantes con discapacidad auditiva ahora participan más activamente."</p>
+                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#audioTestimonioModal" data-testimonio="carolina">
+                                    <i class="fas fa-volume-up me-2"></i>Escuchar testimonio completo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon bg-secondary rounded-circle p-3" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon bg-secondary rounded-circle p-3" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+                
+                <div class="text-center mt-4 hidden">
+                    <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#sharexperienceModal">
+                        <i class="fas fa-share-alt me-2"></i>Compartir mi experiencia
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Novedades -->
+        <section class="py-5 bg-light" id="novedades">
+            <div class="container">
+                <h2 class="text-center section-heading">Últimas Novedades</h2>
+                <div class="row g-4">
+                    <div class="col-md-4 hidden">
+                        <div class="card h-100 border-0 shadow">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/400x200?text=Guía+Laboral" class="card-img-top" alt="Guía laboral">
+                                <span class="position-absolute top-0 end-0 badge bg-danger m-2">Nuevo</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-danger">Derechos laborales para personas con discapacidad</h5>
+                                <p class="card-text">Ya puedes descargar la nueva guía sobre contratación, adaptaciones razonables y protecciones legales en el ámbito laboral.</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
+                                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>20 abril 2025</small>
+                                <a href="#" class="btn btn-ucsc btn-sm">Descargar guía</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 hidden">
+                        <div class="card h-100 border-0 shadow">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/400x200?text=Taller+inclusión" class="card-img-top" alt="Taller virtual">
+                                <span class="position-absolute top-0 end-0 badge bg-primary m-2">Evento</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-danger">Taller virtual gratuito</h5>
+                                <p class="card-text">Participa en el próximo taller sobre inclusión educativa con intérprete en lengua de señas. Cupos limitados.</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
+                                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>30 abril 2025</small>
+                                <button class="btn btn-ucsc btn-sm" data-bs-toggle="modal" data-bs-target="#eventModal">Inscribirse</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 hidden">
+                        <div class="card h-100 border-0 shadow">
+                            <div class="position-relative">
+                                <img src="https://via.placeholder.com/400x200?text=Podcast+Legal" class="card-img-top" alt="Podcast legal">
+                                <span class="position-absolute top-0 end-0 badge bg-success m-2">Serie</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-danger">Nueva temporada de podcast</h5>
+                                <p class="card-text">Escucha nuestra serie de podcasts sobre experiencias de inclusión en la educación superior y el ámbito laboral.</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
+                                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>15 abril 2025</small>
+                                <button class="btn btn-ucsc btn-sm" data-bs-toggle="modal" data-bs-target="#podcastModal">Escuchar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-5 bg-white">
+            <div class="container">
+                <h2 class="text-center section-heading">Preguntas Frecuentes</h2>
+                <div class="accordion hidden" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                ¿Todo el contenido es gratuito?
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Sí, todos los recursos de la plataforma son completamente gratuitos. Este es un proyecto educativo financiado por la Universidad Católica de la Santísima Concepción con el objetivo de promover la inclusión y la accesibilidad legal.
+                            </div>
+                        </div>
+                    </div><div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                ¿Puedo solicitar contenido sobre un tema específico?
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Por supuesto. Puedes enviarnos tus sugerencias a través del formulario de contacto. Evaluamos periódicamente las solicitudes para ampliar nuestra biblioteca de recursos.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                ¿Los materiales están disponibles en distintos formatos?
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Trabajamos constantemente para ofrecer cada recurso en múltiples formatos: texto, audio, video con lengua de señas, y versiones simplificadas. Nuestro objetivo es que todos los contenidos sean accesibles para diversas necesidades.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="py-5 bg-light" id="contacto">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-6 hidden">
+                        <h2 class="text-danger fw-bold">Contáctanos</h2>
+                        <p class="lead">¿Tienes dudas o sugerencias? Estamos aquí para ayudarte.</p>
+                        
+                        <form id="contactForm" class="needs-validation mt-4" novalidate>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="name" required>
+                                <div class="invalid-feedback">
+                                    Por favor ingresa tu nombre.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="email" required>
+                                <div class="invalid-feedback">
+                                    Por favor ingresa un correo válido.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Asunto</label>
+                                <select class="form-select" id="subject" required>
+                                    <option value="" selected disabled>Selecciona una opción</option>
+                                    <option value="consulta">Consulta general</option>
+                                    <option value="sugerencia">Sugerencia de contenido</option>
+                                    <option value="accesibilidad">Problema de accesibilidad</option>
+                                    <option value="colaboracion">Propuesta de colaboración</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Por favor selecciona un asunto.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="message" rows="4" required></textarea>
+                                <div class="invalid-feedback">
+                                    Por favor ingresa tu mensaje.
+                                </div>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="privacy" required>
+                                <label class="form-check-label" for="privacy">Acepto la política de privacidad</label>
+                                <div class="invalid-feedback">
+                                    Debes aceptar la política de privacidad.
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-ucsc">Enviar mensaje</button>
+                        </form>
+                    </div>
+                    
+                    <div class="col-lg-6 hidden">
+                        <div class="card border-0 shadow">
+                            <div class="card-body p-4">
+                                <h3 class="text-center mb-4">Información de contacto</h3>
+                                
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item border-0 d-flex align-items-center">
+                                        <i class="fas fa-map-marker-alt text-danger me-3 fa-fw"></i>
+                                        <div>
+                                            <strong>Dirección:</strong><br>
+                                            Facultad de Derecho UCSC<br>
+                                            Lincoyán 255, Concepción, Bío Bío, Chile
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item border-0 d-flex align-items-center">
+                                        <i class="fas fa-phone text-danger me-3 fa-fw"></i>
+                                        <div>
+                                            <strong>Teléfono:</strong><br>
+                                            +56 9 1234 5678
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item border-0 d-flex align-items-center">
+                                        <i class="fas fa-envelope text-danger me-3 fa-fw"></i>
+                                        <div>
+                                            <strong>Email:</strong><br>
+                                            ejemplo@ucsc.cl
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item border-0 d-flex align-items-center">
+                                        <i class="fas fa-clock text-danger me-3 fa-fw"></i>
+                                        <div>
+                                            <strong>Horario de atención:</strong><br>
+                                            Lunes a viernes: 9:00 - 18:00
+                                        </div>
+                                    </li>
+                                </ul>
+                                
+                                <hr class="my-4">
+                                
+                                <h5 class="text-center mb-3">Síguenos</h5>
+                                <div class="d-flex justify-content-center">
+                                    <a href="#" class="btn btn-outline-dark mx-2" aria-label="Facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-outline-dark mx-2" aria-label="Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-outline-dark mx-2" aria-label="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-outline-dark mx-2" aria-label="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="text-light">Plataforma Jurídica Inclusiva</h5>
+                    <p>Un espacio para la alfabetización jurídica en discapacidad para estudiantes y comunidad educativa.</p>
+                    <img src="https://ucsc.cl/content/uploads/2024/07/logo_facultad_derecho-01.png" alt="Logo UCSC" height="50" class="mt-2 bg-white rounded p-1">
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-light">Enlaces rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio" class="text-white-50 text-decoration-none">Inicio</a></li>
+                        <li><a href="#recursos" class="text-white-50 text-decoration-none">Recursos</a></li>
+                        <li><a href="#testimonios" class="text-white-50 text-decoration-none">Testimonios</a></li>
+                        <li><a href="#novedades" class="text-white-50 text-decoration-none">Novedades</a></li>
+                        <li><a href="#contacto" class="text-white-50 text-decoration-none">Contacto</a></li>
+                        <li><a href="politica-privacidad.html" class="text-white-50 text-decoration-none">Política de privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-light">Suscríbete al boletín</h5>
+                    <p>Recibe actualizaciones sobre nuevos recursos y eventos.</p>
+                    <form class="mt-3">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Tu correo electrónico" aria-label="Email" required>
+                            <button class="btn btn-ucsc" type="submit">Suscribirse</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Universidad Católica de la Santísima Concepción. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Desarrollado por Facultad de Derecho UCSC</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Modal Suscripción -->
+    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="subscribeModalLabel">Suscríbete a nuestra plataforma</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="subscribeName" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="subscribeName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subscribeEmail" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="subscribeEmail" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="subscribeTerms" required>
+                            <label class="form-check-label" for="subscribeTerms">Acepto recibir correos con información educativa</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-ucsc">Suscribirse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Recurso -->
+    <div class="modal fade" id="resourceModal" tabindex="-1" aria-labelledby="resourceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="resourceModalLabel">Recurso</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="resourceContent">
+                        <!-- El contenido se cargará dinámicamente según el recurso seleccionado -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-ucsc" id="downloadResource">Descargar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script src="/js/script-index.js"></script>
+</body>
+</html>
