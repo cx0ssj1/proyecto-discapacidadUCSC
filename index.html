@@ -6,6 +6,7 @@
     <title>Plataforma Jurídica Inclusiva</title>
     <!-- import Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Improt font awsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- import Animate css -->
@@ -64,7 +65,6 @@
             <p class="lead animate__animated animate__fadeInUp">Un espacio accesible, inclusivo y pedagógico diseñado para facilitar la comprensión de los derechos de las personas con discapacidad en Chile.</p>
             <div class="mt-4 animate__animated animate__fadeInUp animate__delay-1s">
                 <a href="#recursos" class="btn btn-light btn-lg me-2">Explorar Recursos</a>
-                <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#subscribeModal">Suscribirse</button>
             </div>
         </div>
     </section>
@@ -550,14 +550,15 @@
                     </ul>
                 </div>
                 <div class="col-lg-4">
-                    <h5 class="text-light">Suscríbete al boletín</h5>
-                    <p>Recibe actualizaciones sobre nuevos recursos y eventos.</p>
-                    <form class="mt-3">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Tu correo electrónico" aria-label="Email" required>
-                            <button class="btn btn-ucsc" type="submit">Suscribirse</button>
-                        </div>
-                    </form>
+                    <h5 class="text-light">Síguenos</h5>
+                    <p>Mantente conectado con nuestras redes sociales para las últimas actualizaciones.</p>
+                    <div class="mt-3 d-flex gap-3">
+                        <a href="#" class="text-white" aria-label="Facebook"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="text-white" aria-label="Twitter"><i class="bi bi-twitter-x fs-4"></i></a>
+                        <a href="#" class="text-white" aria-label="Instagram"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="bi bi-linkedin fs-4"></i></a>
+                        <a href="#" class="text-white" aria-label="YouTube"><i class="bi bi-youtube fs-4"></i></a>
+                    </div>
                 </div>
             </div>
             <hr class="my-4 bg-secondary">
@@ -573,38 +574,6 @@
     </footer>
 
     <!-- Modals -->
-    <!-- Modal Suscripción -->
-    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title" id="subscribeModalLabel">Suscríbete a nuestra plataforma</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="subscribeName" class="form-label">Nombre completo</label>
-                            <input type="text" class="form-control" id="subscribeName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="subscribeEmail" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="subscribeEmail" required>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="subscribeTerms" required>
-                            <label class="form-check-label" for="subscribeTerms">Acepto recibir correos con información educativa</label>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-ucsc">Suscribirse</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Recurso -->
     <div class="modal fade" id="resourceModal" tabindex="-1" aria-labelledby="resourceModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
