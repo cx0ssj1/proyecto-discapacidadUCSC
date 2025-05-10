@@ -151,6 +151,53 @@
                 padding: 60px 0;
             }
         }
+        #accessibility-bar {
+            position: fixed;
+            top: 20%;
+            right: 0;
+            background-color: rgba(33, 37, 41, 0.9);
+            border-radius: 10px 0 0 10px;
+            padding: 10px;
+            z-index: 1000;
+            cursor: move;
+            max-width: 80px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+        }
+
+        #accessibility-bar .btn-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #accessibility-bar .btn {
+            margin: 3px 0;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #accessibility-bar .btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #accessibility-bar .handle {
+            width: 100%;
+            height: 10px;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: move;
+        }
+        .background-primary-color {
+            background-color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -158,22 +205,21 @@
     <a href="#main-content" class="a11y-skip-link">Saltar al contenido principal</a>
     
     <!-- Barra de herramientas de accesibilidad -->
-    <div class="bg-dark py-1 text-center" id="accessibility-bar">
-        <div class="container">
-            <div class="btn-group btn-group-sm" role="group" aria-label="Herramientas de accesibilidad">
-                <button id="increase-text" class="btn btn-outline-light btn-sm" title="Aumentar texto">
-                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
-                </button>
-                <button id="decrease-text" class="btn btn-outline-light btn-sm" title="Disminuir texto">
-                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
-                </button>
-                <button id="toggle-contrast" class="btn btn-outline-light btn-sm" title="Alto contraste">
-                    <i class="fa fa-adjust"></i>
-                </button>
-                <button id="read-page" class="btn btn-outline-light btn-sm" title="Leer página">
-                    <i class="fa fa-volume-up"></i>
-                </button>
-            </div>
+    <div id="accessibility-bar">
+        <div class="handle" title="Arrastrar para mover"></div>
+        <div class="btn-group" role="group" aria-label="Herramientas de accesibilidad">
+            <button id="increase-text" class="btn btn-outline-light" title="Aumentar texto">
+                <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+            </button>
+            <button id="decrease-text" class="btn btn-outline-light" title="Disminuir texto">
+                <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+            </button>
+            <button id="toggle-contrast" class="btn btn-outline-light" title="Alto contraste">
+                <i class="fa fa-adjust"></i>
+            </button>
+            <button id="read-page" class="btn btn-outline-light" title="Leer página">
+                <i class="fa fa-volume-up"></i>
+            </button>
         </div>
     </div>
 
@@ -406,26 +452,26 @@
                         <div class="card-ucsc p-4 h-100">
                             <h3 class="text-danger">Legislación Internacional</h3>
                             <div class="mb-3">
-                                <span class="badge bg-primary">2008</span>
+                                <span class="badge background-primary-color">2008</span>
                                 <h4 class="mt-2">Convención sobre Derechos de las Personas con Discapacidad</h4>
                                 <p>Establece medidas contra la discriminación y promueve la protección de los derechos de las personas con discapacidad.</p>
                             </div>
                             
                             <h3 class="text-danger mt-4">Legislación Nacional</h3>
                             <div class="mb-3">
-                                <span class="badge bg-primary">Ley N° 20.422</span>
+                                <span class="badge background-primary-color">Ley N° 20.422</span>
                                 <h4 class="mt-2">Igualdad de Oportunidades e Inclusión Social</h4>
                                 <p>Establece normas sobre igualdad de oportunidades e inclusión social de personas con discapacidad.</p>
                             </div>
                             
                             <div class="mb-3">
-                                <span class="badge bg-primary">Ley N° 20.609</span>
+                                <span class="badge background-primary-color">Ley N° 20.609</span>
                                 <h4 class="mt-2">Ley Antidiscriminación</h4>
                                 <p>Establece medidas contra la discriminación.</p>
                             </div>
                             
                             <div class="mb-3">
-                                <span class="badge bg-primary">Ley N° 21.545</span>
+                                <span class="badge background-primary-color">Ley N° 21.545</span>
                                 <h4 class="mt-2">Trastorno del Espectro Autista</h4>
                                 <p>Establece la promoción de la inclusión, la atención integral, y la protección de los derechos de las personas con trastorno del espectro autista.</p>
                             </div>
@@ -1031,7 +1077,7 @@
             
             // Increase text size
             increaseTextBtn.addEventListener('click', () => {
-                if (currentFontSize < 150) {
+                if (currentFontSize < 199) {
                     currentFontSize += 10;
                     document.body.style.fontSize = `${currentFontSize}%`;
                 }
@@ -1039,7 +1085,7 @@
             
             // Decrease text size
             decreaseTextBtn.addEventListener('click', () => {
-                if (currentFontSize > 70) {
+                if (currentFontSize > 50) {
                     currentFontSize -= 10;
                     document.body.style.fontSize = `${currentFontSize}%`;
                 }
@@ -1049,6 +1095,8 @@
             contrastBtn.addEventListener('click', () => {
                 isHighContrast = !isHighContrast;
                 document.body.classList.toggle('high-contrast', isHighContrast);
+                setupDraggableAccessibilityBar();
+
             });
             
             // Read page
@@ -1105,11 +1153,47 @@
             });
         }
 
+        // Hacer que la barra de accesibilidad sea movible
+        function setupDraggableAccessibilityBar() {
+            const accessibilityBar = document.getElementById('accessibility-bar');
+            const handle = accessibilityBar.querySelector('.handle');
+            
+            let isDragging = false;
+            let offsetY = 0;
+            
+            handle.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                offsetY = e.clientY - accessibilityBar.getBoundingClientRect().top;
+                
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+            
+            function onMouseMove(e) {
+                if (!isDragging) return;
+                
+                const y = e.clientY - offsetY;
+                const maxY = window.innerHeight - accessibilityBar.offsetHeight;
+                
+                // Mantener dentro de los límites de la ventana
+                const boundedY = Math.max(0, Math.min(maxY, y));
+                
+                accessibilityBar.style.top = boundedY + 'px';
+            }
+            
+            function onMouseUp() {
+                isDragging = false;
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            }
+        }
+
         // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
             window.addEventListener('scroll', checkVisibility);
             checkVisibility(); // Verificar visibilidad inicial
             
+            setupDraggableAccessibilityBar();
             setupFilters();
             setupFormValidation();
             setupAccessibilityTools();
