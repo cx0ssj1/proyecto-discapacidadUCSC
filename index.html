@@ -11,7 +11,147 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- import Animate css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="/css/style-index.css">
+    <style>
+        :root {
+            --primary-color: #D12421;
+            --primary-dark: #D12421;
+            --secondary-color: #646567;
+            --light-bg: #f5f7fa;
+            --white: #ffffff;
+        }
+        
+        .card-ucsc {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-ucsc:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-ucsc {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-ucsc:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+        
+        .navbar-nav .nav-link {
+            position: relative;
+            margin: 0 10px;
+        }
+        
+        .navbar-nav .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(183, 46, 41, 0.8), rgba(52, 64, 85, 0.9)), url('https://via.placeholder.com/1920x1080?text=Fondo+Inclusivo') center/cover no-repeat;
+            color: var(--white);
+            padding: 100px 0;
+        }
+        
+        .animated-counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0;
+            color: var(--primary-color);
+        }
+        
+        .testimonial-carousel .carousel-item {
+            padding: 20px 40px;
+        }
+        
+        .counter-box {
+            padding: 30px 20px;
+            border-radius: 10px;
+            background-color: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .counter-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-heading {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .section-heading:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Estilos de accesibilidad */
+        .a11y-skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            padding: 10px;
+            background: var(--primary-color);
+            color: var(--white);
+            z-index: 9999;
+        }
+        
+        .a11y-skip-link:focus {
+            left: 0;
+        }
+        
+        /* Modo alto contraste */
+        .high-contrast {
+            filter: invert(100%);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Enlaces de accesibilidad -->
@@ -50,6 +190,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link text-dark" href="#inicio">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link text-dark" href="#recursos">Recursos</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#legislacion">Legislación</a></li>
                     <li class="nav-item"><a class="nav-link text-dark" href="#testimonios">Testimonios</a></li>
                     <li class="nav-item"><a class="nav-link text-dark" href="#novedades">Novedades</a></li>
                     <li class="nav-item"><a class="nav-link text-dark" href="#contacto">Contacto</a></li>
@@ -211,16 +352,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 resource-item hidden" data-category="interactivo">
-                        <div class="card-ucsc p-4 h-100">
-                            <div class="fs-1"><i class="fas fa-brain"></i></div>
-                            <h5 class="mt-2">Trivias Legales</h5>
-                            <p>Evalúa tus conocimientos sobre derechos y accesibilidad.</p>
-                            <div class="mt-auto pt-3">
-                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#triviaModal">Iniciar Trivia</button>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-md-4 resource-item hidden" data-category="visual auditivo">
                         <div class="card-ucsc p-4 h-100">
                             <div class="fs-1"><i class="fas fa-hands"></i></div>
@@ -241,6 +372,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-4 resource-item hidden" data-category="visual">
+                        <div class="card-ucsc p-4 h-100">
+                            <div class="fs-1"><i class="fas fa-gavel"></i></div>
+                            <h5 class="mt-2">Guía de Lenguaje Inclusivo</h5>
+                            <p>Aprende a usar correctamente el lenguaje al referirte a personas con discapacidad.</p>
+                            <div class="mt-auto pt-3">
+                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#lenguajeModal">Ver Guía</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-4 resource-item hidden" data-category="interactivo">
                         <div class="card-ucsc p-4 h-100">
                             <div class="fs-1"><i class="fas fa-book-reader"></i></div>
@@ -249,6 +390,65 @@
                             <div class="mt-auto pt-3">
                                 <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#resourceModal" data-resource="guias">Ver Guías</button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legislación -->
+        <section class="py-5 bg-white" id="legislacion">
+            <div class="container">
+                <h2 class="text-center section-heading">Marco Legal sobre Discapacidad</h2>
+                
+                <div class="row g-4 mt-3">
+                    <div class="col-lg-6 hidden">
+                        <div class="card-ucsc p-4 h-100">
+                            <h3 class="text-danger">Legislación Internacional</h3>
+                            <div class="mb-3">
+                                <span class="badge bg-primary">2008</span>
+                                <h4 class="mt-2">Convención sobre Derechos de las Personas con Discapacidad</h4>
+                                <p>Establece medidas contra la discriminación y promueve la protección de los derechos de las personas con discapacidad.</p>
+                            </div>
+                            
+                            <h3 class="text-danger mt-4">Legislación Nacional</h3>
+                            <div class="mb-3">
+                                <span class="badge bg-primary">Ley N° 20.422</span>
+                                <h4 class="mt-2">Igualdad de Oportunidades e Inclusión Social</h4>
+                                <p>Establece normas sobre igualdad de oportunidades e inclusión social de personas con discapacidad.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <span class="badge bg-primary">Ley N° 20.609</span>
+                                <h4 class="mt-2">Ley Antidiscriminación</h4>
+                                <p>Establece medidas contra la discriminación.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <span class="badge bg-primary">Ley N° 21.545</span>
+                                <h4 class="mt-2">Trastorno del Espectro Autista</h4>
+                                <p>Establece la promoción de la inclusión, la atención integral, y la protección de los derechos de las personas con trastorno del espectro autista.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 hidden">
+                        <div class="card-ucsc p-4 h-100">
+                            <h3 class="text-danger">Definiciones Importantes</h3>
+                            
+                            <div class="mb-4">
+                                <h4 class="border-bottom pb-2">Persona con Discapacidad</h4>
+                                <p>"Es aquella que teniendo una o más deficiencias físicas, mentales, sea por causa psíquica o intelectual, o sensoriales, de carácter temporal o permanente, al interactuar con diversas barreras presentes en el entorno, ve impedida o restringida su participación plena y efectiva en la sociedad, en igualdad de condiciones con las demás." <small>- Ley n° 20.422 Art. 5</small></p>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h4 class="border-bottom pb-2">Discapacidad</h4>
+                                <p>"La discapacidad resulta de la interacción entre las personas con deficiencias y las barreras debidas a la actitud y al entorno que evitan su participación plena y efectiva en la sociedad, en igualdad de condiciones con las demás." <small>- Convención Internacional sobre los Derechos de las Personas con Discapacidad</small></p>
+                            </div>
+                            
+                            <a href="#" class="btn btn-ucsc mt-3" data-bs-toggle="modal" data-bs-target="#normativaModal">
+                                <i class="fas fa-book-open me-2"></i>Ver más información normativa
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -544,6 +744,7 @@
                         <li><a href="#inicio" class="text-white-50 text-decoration-none">Inicio</a></li>
                         <li><a href="#recursos" class="text-white-50 text-decoration-none">Recursos</a></li>
                         <li><a href="#testimonios" class="text-white-50 text-decoration-none">Testimonios</a></li>
+                        <li><a href="#legislacion" class="text-white-50 text-decoration-none">legislacion</a></li>
                         <li><a href="#novedades" class="text-white-50 text-decoration-none">Novedades</a></li>
                         <li><a href="#contacto" class="text-white-50 text-decoration-none">Contacto</a></li>
                         <li><a href="politica-privacidad.html" class="text-white-50 text-decoration-none">Política de privacidad</a></li>
@@ -595,11 +796,355 @@
         </div>
     </div>
 
+    <!-- Modal Lenguaje Inclusivo -->
+    <div class="modal fade" id="lenguajeModal" tabindex="-1" aria-labelledby="lenguajeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="lenguajeModalLabel">Guía de Lenguaje Inclusivo</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center mb-4">Uso Correcto del Lenguaje</h4>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Expresiones Incorrectas</th>
+                                    <th scope="col">Expresiones Correctas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Lisiado, Minusválido, Inválido, Discapacitado, Persona con capacidades diferentes</td>
+                                    <td>Persona en situación de discapacidad, Persona con discapacidad</td>
+                                </tr>
+                                <tr>
+                                    <td>Mongólico, Mongolito, Retardado</td>
+                                    <td>Persona con discapacidad intelectual</td>
+                                </tr>
+                                <tr>
+                                    <td>Insano, Loco, Demente, Trastornado, Esquizofrénico</td>
+                                    <td>Persona con discapacidad psíquica</td>
+                                </tr>
+                                <tr>
+                                    <td>Ciego, Invidente, "El" Cieguito, No vidente</td>
+                                    <td>Persona ciega, Persona con discapacidad visual</td>
+                                </tr>
+                                <tr>
+                                    <td>Sordo, Sordito, Sordomudo</td>
+                                    <td>Persona sorda, Persona con discapacidad auditiva</td>
+                                </tr>
+                                <tr>
+                                    <td>Lenguaje de señas</td>
+                                    <td>Lengua de señas</td>
+                                </tr>
+                                <tr>
+                                    <td>Sufre discapacidad, Padece discapacidad, Es víctima de una discapacidad</td>
+                                    <td>Que vive en situación de discapacidad, Que tiene discapacidad</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-ucsc" id="downloadLenguaje">Descargar Guía</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Normativa -->
+    <div class="modal fade" id="normativaModal" tabindex="-1" aria-labelledby="normativaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="normativaModalLabel">Normativa sobre Discapacidad</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Tipos de Discapacidad</h4>
+                    
+                    <div class="row g-4 mt-2">
+                        <div class="col-md-6">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger">Física o Motora</h5>
+                                    <p class="card-text">Es aquella que disminuye la movilidad del cuerpo. Considera las afecciones a las estructuras de los órganos internos.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger">Sensorial</h5>
+                                    <p class="card-text">Es aquella que afecta alguno de los sentidos. Puede ser visual o auditiva.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger">Mental o Psíquica</h5>
+                                    <p class="card-text">Es aquella que deriva de una enfermedad mental, la que puede ser de carácter permanente o transitorio.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger">Intelectual</h5>
+                                    <p class="card-text">Es aquella que se caracteriza por las limitaciones de las funciones intelectuales y de la conducta adaptativa en el entorno. Se origina antes de los 18 años.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger">Múltiple</h5>
+                                    <p class="card-text">Aquellas personas que presentan dos o más discapacidades.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger">Invisible</h5>
+                                    <p class="card-text">La discapacidad no siempre es visible, existen discapacidades que no son evidentes a simple vista.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <p class="fst-italic">La normativa chilena contempla leyes en diversas áreas: Laboral, Salud, Tránsito, Previsional, Matrimonio, Educacional, Social, Deporte, Aduanero, Electoral, entre otros.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-ucsc" id="downloadNormativa">Descargar Normativa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <!-- import Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- import jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="/js/script-index.js"></script>
+    <script text="text/javascript">
+        // Animación de contadores
+        function animateCounters() {
+            const counterElements = document.querySelectorAll('.animated-counter');
+            
+            counterElements.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000; // ms
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString();
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Animaciones de scroll
+        function checkVisibility() {
+            const hiddenElements = document.querySelectorAll('.hidden');
+            const windowHeight = window.innerHeight;
+            
+            hiddenElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                if (elementPosition < windowHeight - 50) {
+                    element.classList.add('show');
+                }
+            });
+        }
+
+        // Filtro de recursos
+        function setupFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Toggle active class
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Filter items
+                    document.querySelectorAll('.resource-item').forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Validación de formularios
+        function setupFormValidation() {
+            const forms = document.querySelectorAll('.needs-validation');
+            
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    } else {
+                        // Aquí iría el código para procesar el formulario
+                        event.preventDefault();
+                        alert('¡Gracias! Tu mensaje ha sido enviado correctamente.');
+                        form.reset();
+                    }
+                    
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }
+
+        // Herramientas de accesibilidad
+        function setupAccessibilityTools() {
+            const increaseTextBtn = document.getElementById('increase-text');
+            const decreaseTextBtn = document.getElementById('decrease-text');
+            const contrastBtn = document.getElementById('toggle-contrast');
+            const readPageBtn = document.getElementById('read-page');
+            
+            let currentFontSize = 100;
+            let isHighContrast = false;
+            let speechSynthesis = window.speechSynthesis;
+            
+            // Increase text size
+            increaseTextBtn.addEventListener('click', () => {
+                if (currentFontSize < 150) {
+                    currentFontSize += 10;
+                    document.body.style.fontSize = `${currentFontSize}%`;
+                }
+            });
+            
+            // Decrease text size
+            decreaseTextBtn.addEventListener('click', () => {
+                if (currentFontSize > 70) {
+                    currentFontSize -= 10;
+                    document.body.style.fontSize = `${currentFontSize}%`;
+                }
+            });
+            
+            // Toggle high contrast
+            contrastBtn.addEventListener('click', () => {
+                isHighContrast = !isHighContrast;
+                document.body.classList.toggle('high-contrast', isHighContrast);
+            });
+            
+            // Read page
+            readPageBtn.addEventListener('click', () => {
+                if (speechSynthesis) {
+                    const mainContent = document.getElementById('main-content').textContent;
+                    const utterance = new SpeechSynthesisUtterance(mainContent);
+                    utterance.lang = 'es-ES';
+                    
+                    if (speechSynthesis.speaking) {
+                        speechSynthesis.cancel();
+                    } else {
+                        speechSynthesis.speak(utterance);
+                    }
+                } else {
+                    alert('Lo sentimos, tu navegador no soporta la síntesis de voz.');
+                }
+            });
+        }
+
+        // Cargar recursos
+        function setupResourceModals() {
+            const resourceButtons = document.querySelectorAll('[data-bs-target="#resourceModal"]');
+            
+            resourceButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const resourceType = button.getAttribute('data-resource');
+                    const resourceTitle = button.closest('.card-ucsc').querySelector('h5').textContent;
+                    
+                    // Actualizar título del modal
+                    document.getElementById('resourceModalLabel').textContent = resourceTitle;
+                    
+                    // Simulación de carga de contenido basado en el tipo de recurso
+                    let content = '';
+                    switch(resourceType) {
+                        case 'infografias':
+                            content = '<img src="https://via.placeholder.com/800x400?text=Infografía+Legal" class="img-fluid mb-3" alt="Infografía Legal">';
+                            content += '<p>Esta infografía explica los derechos educativos principales para estudiantes con discapacidad según la ley chilena.</p>';
+                            break;
+                        case 'audio':
+                            content = '<audio controls class="w-100 mb-3"><source src="#" type="audio/mpeg">Tu navegador no soporta audio HTML5.</audio>';
+                            content += '<p>Audio explicativo sobre los ajustes razonables en educación superior.</p>';
+                            break;
+                        case 'videos':
+                            content = '<div class="ratio ratio-16x9 mb-3"><iframe src="https://via.placeholder.com/560x315?text=Video+con+LSCh" title="Video con lengua de señas" allowfullscreen></iframe></div>';
+                            content += '<p>Video explicativo con interpretación en Lengua de Señas Chilena sobre derechos educativos.</p>';
+                            break;
+                        default:
+                            content = '<div class="text-center py-5"><i class="fas fa-spinner fa-spin fa-3x"></i><p class="mt-3">Cargando recurso...</p></div>';
+                    }
+                    
+                    document.getElementById('resourceContent').innerHTML = content;
+                });
+            });
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility(); // Verificar visibilidad inicial
+            
+            setupFilters();
+            setupFormValidation();
+            setupAccessibilityTools();
+            setupResourceModals();
+            
+            // Iniciar animación de contadores cuando la sección sea visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.counter-box').forEach(box => {
+                observer.observe(box);
+            });
+        });
+
+        // Para el modal de normativa y lenguaje
+        document.querySelectorAll('[data-bs-target="#normativaModal"], [data-bs-target="#lenguajeModal"]').forEach(button => {
+            button.addEventListener('click', () => {
+                setupResourceModals()
+            });
+        });
+
+        // Simulación de descarga
+        document.getElementById('downloadLenguaje')?.addEventListener('click', function() {
+            alert('Descargando guía de lenguaje inclusivo...');
+        });
+
+        document.getElementById('downloadNormativa')?.addEventListener('click', function() {
+            alert('Descargando documento de normativa completa...');
+        });
+    </script>
 </body>
 </html>
