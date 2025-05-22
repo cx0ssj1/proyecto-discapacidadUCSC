@@ -11,10 +11,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- import Animate css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- import css files -->
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/components/navbar/navbar.css">
+    <link rel="stylesheet" href="/components/accessibility-bar/accessibility-bar.css">
+    <link rel="stylesheet" href="/css/variables.css">
+    <!-- import js -->
+    <script src="/js/inyectarComponentes.js"></script>
+    <script src="/js/accessibility-bar.js"></script>
+    <script src="/js/init.js"></script>
 </head>
 <body>
+    <!-- Navbar -->
+     <div id="navbar-container"></div>
+
+     <!-- Accessibility Bar -->
+    <div id="accessibility-bar-container"></div>
+
     <!-- Enlaces de accesibilidad -->
     <a href="#main-content" class="a11y-skip-link">Saltar al contenido principal</a>
 
@@ -547,7 +560,12 @@
             </div>
         </section>
     </main>
-
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    <!-- Modals -->
+    <div id="language-modal-container"></div>
+    <div id="normativa-modal-container"></div>
+    <div id="resource-modal-container"></div>
     <!-- Scripts -->
     <!-- import Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
