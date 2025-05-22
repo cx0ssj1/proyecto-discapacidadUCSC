@@ -7,7 +7,6 @@ function animateCounters() {
         const duration = 2000; // ms
         const increment = target / (duration / 16);
         let current = 0;
-        
         const updateCounter = () => {
             current += increment;
             if (current < target) {

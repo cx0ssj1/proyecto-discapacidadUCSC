@@ -9,34 +9,39 @@ function setupAccessibilityTools() {
     let currentFontSize = 100;
     let isHighContrast = false;
     let speechSynthesis = window.speechSynthesis;
+
+    // Verifica que la barra exista antes de hacerla movible
+    if (document.getElementById('accessibility-bar')) {
+        setupDraggableAccessibilityBar();
+    }
     
-    increaseTextBtn.addEventListener('click', () => {
+    increaseTextBtn?.addEventListener('click', () => {
         if (currentFontSize < 199) {
             currentFontSize += 10;
             document.body.style.fontSize = `${currentFontSize}%`;
         }
     });
     
-    decreaseTextBtn.addEventListener('click', () => {
+    decreaseTextBtn?.addEventListener('click', () => {
         if (currentFontSize > 50) {
             currentFontSize -= 10;
             document.body.style.fontSize = `${currentFontSize}%`;
         }
     });
     
-    contrastBtn.addEventListener('click', () => {
+    contrastBtn?.addEventListener('click', () => {
         isHighContrast = !isHighContrast;
         document.body.classList.toggle('high-contrast', isHighContrast);
-        setupDraggableAccessibilityBar();
-
     });
     
-    readPageBtn.addEventListener('click', () => {
+    readPageBtn?.addEventListener('click', () => {
         if (speechSynthesis) {
-            const mainContent = document.getElementById('main-content').textContent;
+            const mainContent = document.getElementById('main-content')?.textContent;
+            if (!mainContent) return alert('No se encontró contenido principal para leer.');
+            
             const utterance = new SpeechSynthesisUtterance(mainContent);
             utterance.lang = 'es-ES';
-            
+
             if (speechSynthesis.speaking) {
                 speechSynthesis.cancel();
             } else {
@@ -49,10 +54,13 @@ function setupAccessibilityTools() {
 }
 
 
+
 // Hacer que la barra de accesibilidad sea movible
 function setupDraggableAccessibilityBar() {
     const accessibilityBar = document.getElementById('accessibility-bar');
+    console.log('accessibilityBar', accessibilityBar); // Esto mostrará null si no existe
     const handle = accessibilityBar.querySelector('.handle');
+
     
     let isDragging = false;
     let offsetY = 0;

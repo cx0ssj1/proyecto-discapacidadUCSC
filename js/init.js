@@ -1,23 +1,17 @@
 
+
 // Inicialización
 document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', checkVisibility);
     checkVisibility(); // Verificar visibilidad inicial
     
-    setupDraggableAccessibilityBar();
     setupFilters();
     setupFormValidation();
     setupAccessibilityTools();
     setupResourceModals();
     
-    // Iniciar animación de contadores cuando la sección sea visible
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounters();
-                observer.unobserve(entry.target);
-            }
-        });
+        animateCounters();
     });
     
     document.querySelectorAll('.counter-box').forEach(box => {
