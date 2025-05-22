@@ -1,0 +1,70 @@
+
+/* Estilos de accesibilidad */
+.a11y-skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    padding: 10px;
+    background: var(--primary-color);
+    color: var(--white);
+    z-index: 9999;
+}
+
+.a11y-skip-link:focus {
+    left: 0;
+}
+
+/* Modo alto contraste */
+.high-contrast {
+    filter: invert(100%);
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+}
+#accessibility-bar {
+    position: fixed;
+    top: 20%;
+    right: 0;
+    background-color: rgba(33, 37, 41, 0.9);
+    border-radius: 10px 0 0 10px;
+    padding: 10px;
+    z-index: 1000;
+    cursor: move;
+    max-width: 80px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease;
+}
+
+#accessibility-bar .btn-group {
+    display: flex;
+    flex-direction: column;
+}
+
+#accessibility-bar .btn {
+    margin: 3px 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#accessibility-bar .btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#accessibility-bar .handle {
+    width: 100%;
+    height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: move;
+}
