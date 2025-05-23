@@ -1,9 +1,4 @@
-// ==========================================
-// SCRIPT PRINCIPAL PARA PÁGINA DE APOYO
-// ==========================================
-
 $(document).ready(function() {
-    console.log('Script de apoyo cargado');
     
     // Inicializar todas las funcionalidades
     initScrollAnimations();
@@ -278,15 +273,6 @@ function showNotification(message, type = 'info') {
 // ==========================================
 // EFECTOS ADICIONALES
 // ==========================================
-
-// Efecto parallax suave en hero
-$(window).on('scroll', function() {
-    const scrolled = $(this).scrollTop();
-    const parallax = $('.hero-section');
-    const speed = 0.5;
-    
-    parallax.css('transform', `translateY(${scrolled * speed}px)`);
-});
 
 // Highlight en hover para tarjetas de recursos
 $('.resource-link-card, .download-card').on('mouseenter', function() {

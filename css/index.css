@@ -1,3 +1,6 @@
+.text-primary-color {
+    color: var(--primary-color);
+}
 .card-ucsc {
     background-color: var(--white);
     border-radius: 12px;
