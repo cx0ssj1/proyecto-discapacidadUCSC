@@ -1,12 +1,11 @@
 $(document).ready(function() {
-    
+    setupAccessibilityTools();
+
     // Inicializar todas las funcionalidades
     initScrollAnimations();
     initSearchFunctionality();
     initFilterFunctionality();
     initDownloadModals();
-    initCounterAnimations();
-    initSmoothScrolling();
     
     // Mostrar elementos con delay
     setTimeout(() => {

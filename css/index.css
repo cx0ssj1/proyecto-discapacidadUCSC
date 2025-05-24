@@ -31,7 +31,7 @@ body {
 }
 
 .hero-section {
-    background: linear-gradient(135deg, rgba(183, 46, 41, 0.8), rgba(52, 64, 85, 0.9)), url('https://via.placeholder.com/1920x1080?text=Fondo+Inclusivo') center/cover no-repeat;
+    background: linear-gradient(135deg, rgba(183, 46, 41, 0.8), rgba(52, 64, 85, 0.9)), center/cover no-repeat;
     color: var(--white);
     padding: 100px 0;
 }

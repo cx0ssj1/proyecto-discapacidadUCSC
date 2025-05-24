@@ -29,8 +29,7 @@ body {
 }
 
 .hero-section {
-    background: linear-gradient(135deg, rgba(183, 46, 41, 0.8), rgba(52, 64, 85, 0.9)), 
-    url('/api/placeholder/1920/600') center/cover no-repeat;
+    background: linear-gradient(135deg, rgba(183, 46, 41, 0.8), rgba(52, 64, 85, 0.9)), center/cover no-repeat;
     color: var(--white);
     padding: 100px 0;
     position: relative;
@@ -275,64 +274,6 @@ body {
     border-radius: 15px;
     padding: 40px;
     text-align: center;
-}
-
-/* Responsividad */
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 60px 0;
-    }
-    
-    .hero-section .display-4 {
-        font-size: 2rem;
-    }
-    
-    .btn-group {
-        justify-content: center;
-    }
-    
-    .filter-btn {
-        margin: 5px 2px;
-        font-size: 0.9rem;
-        padding: 6px 15px;
-    }
-    
-    .institution-icon {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .institution-icon i {
-        font-size: 1.5rem;
-    }
-    
-    .stat-box {
-        margin-bottom: 20px;
-    }
-    
-    .animated-counter {
-        font-size: 2rem;
-    }
-    
-    .search-box {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-section .btn {
-        display: block;
-        margin: 5px 0;
-        width: 100%;
-    }
-    
-    .d-flex.gap-3 {
-        flex-direction: column;
-    }
-    
-    .d-flex.gap-3 .btn {
-        margin-bottom: 10px;
-    }
 }
 
 /* Animaciones personalizadas */

@@ -1,4 +1,3 @@
-
 // Herramientas de accesibilidad
 function setupAccessibilityTools() {
     const increaseTextBtn = document.getElementById('increase-text');
