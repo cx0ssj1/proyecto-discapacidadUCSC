@@ -47,14 +47,24 @@ function setupAccessibilityTools() {
     });
 }
 
-
-
 // Hacer que la barra de accesibilidad sea movible
 function setupDraggableAccessibilityBar() {
     const accessibilityBar = document.getElementById('accessibility-bar');
-    console.log('accessibilityBar', accessibilityBar); // Esto mostrará null si no existe
+    console.log('accessibilityBar', accessibilityBar);
+    
+    // Verificar si existe el elemento antes de continuar
+    if (!accessibilityBar) {
+        console.warn('No se encontró el elemento accessibility-bar');
+        return;
+    }
+    
     const handle = accessibilityBar.querySelector('.handle');
-
+    
+    // Verificar si existe el handle
+    if (!handle) {
+        console.warn('No se encontró el elemento .handle dentro de accessibility-bar');
+        return;
+    }
     
     let isDragging = false;
     let offsetY = 0;
