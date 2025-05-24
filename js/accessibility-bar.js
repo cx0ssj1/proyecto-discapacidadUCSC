@@ -9,10 +9,7 @@ function setupAccessibilityTools() {
     let isHighContrast = false;
     let speechSynthesis = window.speechSynthesis;
 
-    // Verifica que la barra exista antes de hacerla movible
-    if (document.getElementById('accessibility-bar')) {
-        setupDraggableAccessibilityBar();
-    }
+    setupDraggableAccessibilityBar();
     
     increaseTextBtn?.addEventListener('click', () => {
         if (currentFontSize < 199) {
