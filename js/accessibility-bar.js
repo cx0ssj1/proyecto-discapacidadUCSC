@@ -8,8 +8,6 @@ function setupAccessibilityTools() {
     let currentFontSize = 100;
     let isHighContrast = false;
     let speechSynthesis = window.speechSynthesis;
-
-    setupDraggableAccessibilityBar();
     
     increaseTextBtn?.addEventListener('click', () => {
         if (currentFontSize < 199) {

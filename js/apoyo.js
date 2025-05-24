@@ -1,5 +1,6 @@
 $(document).ready(function() {
     setupAccessibilityTools();
+    setupDraggableAccessibilityBar();
 
     // Inicializar todas las funcionalidades
     initScrollAnimations();
