@@ -1,11 +1,12 @@
 $(document).ready(function() {
     window.addEventListener('scroll', checkVisibility);
     checkVisibility(); // Verificar visibilidad inicial
-    
-    setupFilters();
-    setupFormValidation();
-    setupAccessibilityTools();
-    setupResourceModals();
+    setTimeout(() => {
+        setupFilters();
+        setupFormValidation();
+        setupAccessibilityTools();
+        setupResourceModals();
+    }, 500);
     
     const observer = new IntersectionObserver((entries) => {
         animateCounters();

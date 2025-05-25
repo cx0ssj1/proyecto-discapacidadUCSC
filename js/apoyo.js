@@ -9,6 +9,7 @@ $(document).ready(function() {
         initSearchFunctionality();
         initFilterFunctionality();
         initDownloadModals();
+        
         showElementsSequentially();
     }, 500);
 });
