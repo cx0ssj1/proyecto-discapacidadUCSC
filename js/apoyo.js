@@ -1,14 +1,14 @@
 $(document).ready(function() {
-    setupAccessibilityTools();
-
-    // Inicializar todas las funcionalidades
-    initScrollAnimations();
-    initSearchFunctionality();
-    initFilterFunctionality();
-    initDownloadModals();
     
     // Mostrar elementos con delay
     setTimeout(() => {
+        setupAccessibilityTools();
+
+        // Inicializar todas las funcionalidades
+        initScrollAnimations();
+        initSearchFunctionality();
+        initFilterFunctionality();
+        initDownloadModals();
         showElementsSequentially();
     }, 500);
 });
