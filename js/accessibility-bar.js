@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    // Mostrar elementos con delay
+    setTimeout(() => {
+        setupAccessibilityTools();
+    }, 500);
+});
 // Herramientas de accesibilidad
 function setupAccessibilityTools() {
     const increaseTextBtn = document.getElementById('increase-text');

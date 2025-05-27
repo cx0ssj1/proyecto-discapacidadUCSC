@@ -1,50 +1,36 @@
 $(document).ready(function() {
-    
-    // Mostrar elementos con delay
+    // Inicializar todas las funcionalidades con un pequeño delay
     setTimeout(() => {
-        setupAccessibilityTools();
-
-        // Inicializar todas las funcionalidades
-        initScrollAnimations();
-        initSearchFunctionality();
-        initFilterFunctionality();
-        initDownloadModals();
-        
-        showElementsSequentially();
-    }, 500);
+        inicializarAnimacionesScroll();
+        inicializarFuncionalidadFiltros();
+        inicializarFuncionalidadBusqueda();
+    }, 300); // Reducido de 500ms a 300ms
 });
 
 // ==========================================
 // ANIMACIONES DE SCROLL
 // ==========================================
 
-function initScrollAnimations() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-                
-                // Si es un contador, iniciarlo
-                if (entry.target.classList.contains('animated-counter')) {
-                    animateCounter(entry.target);
-                }
+function inicializarAnimacionesScroll() {
+    // Configuración optimizada del observer
+    const opciones = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observador = new IntersectionObserver((entradas) => {
+        entradas.forEach(entrada => {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add('show');
+                // Dejar de observar el elemento una vez que se muestra
+                observador.unobserve(entrada.target);
             }
         });
-    });
+    }, opciones);
 
     // Observar todos los elementos ocultos
-    document.querySelectorAll('.hidden').forEach(el => {
-        observer.observe(el);
-    });
-}
-
-function showElementsSequentially() {
-    const hiddenElements = document.querySelectorAll('.hidden');
-    
-    hiddenElements.forEach((element, index) => {
-        setTimeout(() => {
-            element.classList.add('show');
-        }, index * 100);
+    document.querySelectorAll('.hidden').forEach(elemento => {
+        observador.observe(elemento);
     });
 }
 
@@ -52,266 +38,259 @@ function showElementsSequentially() {
 // FUNCIONALIDAD DE BÚSQUEDA
 // ==========================================
 
-function initSearchFunctionality() {
-    const searchInput = $('#searchInput');
-    const searchBtn = $('#searchBtn');
+function inicializarFuncionalidadBusqueda() {
+    const $campoBusqueda = $('#searchInput');
+    const $botonBusqueda = $('#searchBtn');
     
-    // Búsqueda en tiempo real
-    searchInput.on('input', debounce(performSearch, 300));
+    if (!$campoBusqueda.length) return; // Verificar que el elemento existe
+    
+    // Búsqueda en tiempo real con debounce optimizado
+    $campoBusqueda.on('input', retrasarEjecucion(realizarBusqueda, 250));
     
     // Búsqueda al hacer clic en el botón
-    searchBtn.on('click', performSearch);
+    $botonBusqueda.on('click', realizarBusqueda);
     
     // Búsqueda al presionar Enter
-    searchInput.on('keypress', function(e) {
-        if (e.which === 13) {
-            performSearch();
+    $campoBusqueda.on('keypress', function(evento) {
+        if (evento.which === 13) {
+            evento.preventDefault();
+            realizarBusqueda();
         }
     });
 }
 
-function performSearch() {
-    const searchTerm = $('#searchInput').val().toLowerCase().trim();
-    const resourceItems = $('.resource-item');
+function realizarBusqueda() {
+    const terminoBusqueda = $('#searchInput').val().toLowerCase().trim();
+    const $elementosRecurso = $('.resource-item');
     
-    if (searchTerm === '') {
-        // Mostrar todos los elementos
-        resourceItems.removeClass('filtered-out').fadeIn(300);
-        updateResultsCount(resourceItems.length);
+    if (!$elementosRecurso.length) return; // Verificar que existen elementos
+    
+    if (terminoBusqueda === '') {
+        mostrarTodosElementos($elementosRecurso);
         return;
     }
     
-    let visibleCount = 0;
+    const elementosVisibles = filtrarElementosPorBusqueda($elementosRecurso, terminoBusqueda);
+    actualizarContadorResultados(elementosVisibles);
     
-    resourceItems.each(function() {
-        const $item = $(this);
-        const text = $item.text().toLowerCase();
-        
-        if (text.includes(searchTerm)) {
-            $item.removeClass('filtered-out').fadeIn(300, function() {
-                $(this).addClass('highlight-result');
-                setTimeout(() => {
-                    $(this).removeClass('highlight-result');
-                }, 2000);
-            });
-            visibleCount++;
-        } else {
-            $item.addClass('filtered-out').fadeOut(300);
-        }
-    });
-    
-    updateResultsCount(visibleCount);
-    
-    // Scroll suave a los resultados si hay búsqueda
-    if (searchTerm !== '') {
-        $('html, body').animate({
-            scrollTop: $('#instituciones').offset().top - 100
-        }, 800);
+    // Scroll suave optimizado
+    if (terminoBusqueda !== '') {
+        desplazarseASección('#instituciones');
     }
 }
 
-function updateResultsCount(count) {
-    // Remover contador anterior si existe
-    $('.search-results-count').remove();
+function mostrarTodosElementos($elementos) {
+    $elementos.removeClass('filtered-out').fadeIn(200);
+    actualizarContadorResultados($elementos.length);
+}
+
+function filtrarElementosPorBusqueda($elementos, termino) {
+    let contadorVisible = 0;
     
-    // Añadir nuevo contador
-    if ($('#searchInput').val().trim() !== '') {
-        const countHtml = `
-            <div class="search-results-count text-center mt-3">
-                <small class="text-muted">
-                    <i class="fas fa-search me-1"></i>
-                    Se encontraron ${count} resultado${count !== 1 ? 's' : ''}
-                </small>
-            </div>
-        `;
-        $('.search-box').after(countHtml);
+    $elementos.each(function() {
+        const $elemento = $(this);
+        const textoElemento = obtenerTextoElemento($elemento);
+        
+        if (textoElemento.includes(termino)) {
+            mostrarElementoConAnimacion($elemento);
+            contadorVisible++;
+        } else {
+            ocultarElemento($elemento);
+        }
+    });
+    
+    return contadorVisible;
+}
+
+function obtenerTextoElemento($elemento) {
+    // Cache del texto para mejor rendimiento
+    let texto = $elemento.data('texto-busqueda');
+    if (!texto) {
+        texto = $elemento.text().toLowerCase();
+        $elemento.data('texto-busquedad', texto);
     }
+    return texto;
+}
+
+function mostrarElementoConAnimacion($elemento) {
+    $elemento.removeClass('filtered-out').fadeIn(200, function() {
+        $(this).addClass('highlight-result');
+        setTimeout(() => {
+            $(this).removeClass('highlight-result');
+        }, 1500); // Reducido de 2000ms
+    });
+}
+
+function ocultarElemento($elemento) {
+    $elemento.addClass('filtered-out').fadeOut(200);
+}
+
+function actualizarContadorResultados(cantidad) {
+    const $contadorAnterior = $('.search-results-count');
+    $contadorAnterior.remove();
+    
+    const valorBusqueda = $('#searchInput').val().trim();
+    if (valorBusqueda !== '') {
+        mostrarContadorResultados(cantidad);
+    }
+}
+
+function mostrarContadorResultados(cantidad) {
+    const textoPlural = cantidad !== 1 ? 's' : '';
+    const htmlContador = `
+        <div class="search-results-count text-center mt-3 animate__animated animate__fadeIn">
+            <small class="text-muted">
+                <i class="fas fa-search me-1"></i>
+                ${cantidad === 0 ? 'No se encontraron resultados' : `Se encontraron ${cantidad} resultado${textoPlural}`}
+            </small>
+        </div>
+    `;
+    $('.search-box').after(htmlContador);
 }
 
 // ==========================================
 // FUNCIONALIDAD DE FILTROS
 // ==========================================
 
-function initFilterFunctionality() {
-    $('.filter-btn').on('click', function() {
-        const $btn = $(this);
-        const filter = $btn.data('filter');
+function inicializarFuncionalidadFiltros() {
+    const $botonesFiltro = $('.filter-btn');
+    
+    if (!$botonesFiltro.length) return;
+    
+    $botonesFiltro.on('click', function(evento) {
+        evento.preventDefault();
+        const $boton = $(this);
+        const filtro = $boton.data('filter');
         
-        // Actualizar botones activos
-        $('.filter-btn').removeClass('active');
-        $btn.addClass('active');
+        if ($boton.hasClass('active')) return; // Evitar procesar el mismo filtro
         
-        // Aplicar filtro
-        applyFilter(filter);
-        
-        // Limpiar búsqueda
-        $('#searchInput').val('');
-        $('.search-results-count').remove();
+        actualizarBotonesActivos($boton);
+        aplicarFiltro(filtro);
+        limpiarBusqueda();
     });
 }
 
-function applyFilter(filter) {
-    const resourceItems = $('.resource-item');
+function actualizarBotonesActivos($botonActivo) {
+    $('.filter-btn').removeClass('active');
+    $botonActivo.addClass('active');
+}
+
+function aplicarFiltro(filtro) {
+    const $elementosRecurso = $('.resource-item');
     
-    if (filter === 'all') {
-        resourceItems.removeClass('filtered-out').fadeIn(300);
+    if (!$elementosRecurso.length) return;
+    
+    if (filtro === 'all') {
+        $elementosRecurso.removeClass('filtered-out').fadeIn(200);
     } else {
-        resourceItems.each(function() {
-            const $item = $(this);
-            const categories = $item.data('category') || '';
-            
-            if (categories.includes(filter)) {
-                $item.removeClass('filtered-out').fadeIn(300);
-            } else {
-                $item.addClass('filtered-out').fadeOut(300);
-            }
-        });
+        filtrarElementosPorCategoria($elementosRecurso, filtro);
     }
     
-    // Scroll suave a la sección de instituciones
-    setTimeout(() => {
-        $('html, body').animate({
-            scrollTop: $('#instituciones').offset().top - 100
-        }, 800);
-    }, 100);
+    // Scroll suave con delay mínimo
+    setTimeout(() => desplazarseASección('#instituciones'), 50);
 }
 
-// ==========================================
-// MODALES DE DESCARGA
-// ==========================================
-
-function initDownloadModals() {
-    $('.download-btn').on('click', function(e) {
-        e.preventDefault();
+function filtrarElementosPorCategoria($elementos, categoria) {
+    $elementos.each(function() {
+        const $elemento = $(this);
+        const categorias = $elemento.data('category') || '';
         
-        const $btn = $(this);
-        const $card = $btn.closest('.download-card');
-        const documentTitle = $card.find('h6').text();
-        
-        // Actualizar modal con información del documento
-        $('#downloadModalLabel').text('Descarga: ' + documentTitle);
-        
-        // Mostrar modal
-        const modal = new bootstrap.Modal(document.getElementById('downloadModal'));
-        modal.show();
-        
-        // Configurar botón de descarga en el modal
-        $('.modal .btn-ucsc').off('click').on('click', function() {
-            initiateDownload(documentTitle);
-            modal.hide();
-        });
+        if (categorias.toString().includes(categoria)) {
+            $elemento.removeClass('filtered-out').fadeIn(200);
+        } else {
+            $elemento.addClass('filtered-out').fadeOut(200);
+        }
     });
 }
 
-function initiateDownload(documentTitle) {
-    // Simular descarga (en un caso real, aquí iría la URL del documento)
-    showNotification('Descarga iniciada: ' + documentTitle, 'success');
-    
-    // Ejemplo de descarga real (descomenta y ajusta según tus necesidades):
-    /*
-    const downloadUrl = getDownloadUrl(documentTitle);
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-    link.download = documentTitle + '.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    */
+function limpiarBusqueda() {
+    $('#searchInput').val('');
+    $('.search-results-count').remove();
 }
 
 // ==========================================
-// FUNCIONES AUXILIARES
+// FUNCIONES DE UTILIDAD
 // ==========================================
 
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+function desplazarseASección(selector) {
+    const $seccion = $(selector);
+    if ($seccion.length) {
+        $('html, body').animate({
+            scrollTop: $seccion.offset().top - 80 // Reducido de 100px
+        }, 600); // Reducido de 800ms
+    }
+}
+
+function retrasarEjecucion(funcion, retraso) {
+    let temporizador;
+    return function(...argumentos) {
+        clearTimeout(temporizador);
+        temporizador = setTimeout(() => funcion.apply(this, argumentos), retraso);
     };
 }
 
-function showNotification(message, type = 'info') {
-    // Remover notificaciones anteriores
-    $('.notification').remove();
+function mostrarNotificacion(mensaje, tipo = 'info') {
+    // Remover notificaciones anteriores con animación
+    $('.notification').fadeOut(200, function() {
+        $(this).remove();
+    });
     
-    const iconMap = {
+    const configuracionIconos = {
         success: 'fas fa-check-circle',
         error: 'fas fa-exclamation-circle',
         warning: 'fas fa-exclamation-triangle',
         info: 'fas fa-info-circle'
     };
     
-    const colorMap = {
+    const configuracionColores = {
         success: 'alert-success',
         error: 'alert-danger',
         warning: 'alert-warning',
         info: 'alert-info'
     };
     
-    const notification = $(`
-        <div class="notification alert ${colorMap[type]} alert-dismissible fade show position-fixed" 
-             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
-            <i class="${iconMap[type]} me-2"></i>
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    const $notificacion = $(`
+        <div class="notification alert ${configuracionColores[tipo]} alert-dismissible fade position-fixed" 
+             style="top: 20px; right: 20px; z-index: 9999; min-width: 300px; display: none;">
+            <i class="${configuracionIconos[tipo]} me-2"></i>
+            <span>${mensaje}</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
         </div>
     `);
     
-    $('body').append(notification);
+    $('body').append($notificacion);
+    $notificacion.fadeIn(300).addClass('show');
     
-    // Auto-ocultar después de 5 segundos
+    // Auto-ocultar con animación mejorada
     setTimeout(() => {
-        notification.alert('close');
-    }, 5000);
+        $notificacion.fadeOut(300, function() {
+            $(this).remove();
+        });
+    }, 4000); // Reducido de 5000ms
 }
 
 // ==========================================
-// EFECTOS ADICIONALES
+// FUNCIONES PARA DESCARGA (COMENTADAS)
 // ==========================================
 
-// Highlight en hover para tarjetas de recursos
-$('.resource-link-card, .download-card').on('mouseenter', function() {
-    $(this).addClass('shadow-lg');
-}).on('mouseleave', function() {
-    $(this).removeClass('shadow-lg');
-});
-
-// ==========================================
-// ACCESIBILIDAD MEJORADA
-// ==========================================
-
-// Navegación por teclado en filtros
-$('.filter-btn').on('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        $(this).click();
-    }
-});
-
-// Navegación por teclado en botones de descarga
-$('.download-btn').on('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        $(this).click();
-    }
-});
-
-// Anunciar cambios para lectores de pantalla
-function announceToScreenReader(message) {
-    const announcement = $('<div>', {
-        'aria-live': 'polite',
-        'aria-atomic': 'true',
-        'class': 'sr-only'
-    }).text(message);
+/*
+function iniciarDescarga(tituloDocumento) {
+    mostrarNotificacion('Descarga iniciada: ' + tituloDocumento, 'success');
     
-    $('body').append(announcement);
+    // Ejemplo de implementación real:
+    const urlDescarga = obtenerUrlDescarga(tituloDocumento);
+    const enlace = document.createElement('a');
+    enlace.href = urlDescarga;
+    enlace.download = tituloDocumento + '.pdf';
+    enlace.style.display = 'none';
     
-    setTimeout(() => {
-        announcement.remove();
-    }, 1000);
+    document.body.appendChild(enlace);
+    enlace.click();
+    document.body.removeChild(enlace);
 }
+
+function obtenerUrlDescarga(titulo) {
+    // Lógica para obtener la URL de descarga basada en el título
+    return `/downloads/${encodeURIComponent(titulo)}.pdf`;
+}
+*/
