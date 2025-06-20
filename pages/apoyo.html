@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="/css/apoyo.css">
     <link rel="stylesheet" href="/components/navbar/navbar.css">
     <link rel="stylesheet" href="/components/accessibility-bar/accessibility-bar.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/high-constrast.css">
+     
     <!-- import js -->
     <script src="/js/inyectarComponentesApoyo.js"></script>
     <script src="/js/accessibility-bar.js"></script>
@@ -29,9 +32,6 @@
 
     <!-- Accessibility Bar -->
     <div id="accessibility-bar-container"></div>
-
-    <!-- Enlaces de accesibilidad -->
-    <a href="#main-content" class="a11y-skip-link">Saltar al contenido principal</a>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -371,30 +371,31 @@
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- eJEMPLO Modal para descargas -->
-    <!-- 
-    <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="downloadModalLabel">Descarga de Documento</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Este documento te ayudará con tus trámites. ¿Deseas descargarlo?</p>
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle me-2"></i>
-                        El documento se abrirá en una nueva pestaña para su descarga.
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-ucsc">Descargar</button>
-                </div>
-            </div>
-        </div>
-    </div> 
-    -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            webhookUrl: 'https://carssj.app.n8n.cloud/webhook/e8cd4f3f-76cc-4c22-943e-f60a7afb9091/chat',
+            title: 'JustiBot',
+            subtitle: 'Asistente Legal sobre Discapacidad',
+            initialMessages: ['👩‍⚖️ ¡Hola! Soy JustiBot. Estoy aquí para orientarte sobre leyes, derechos y recursos relacionados con la discapacidad en tu país.',
+                '💡 Puedes preguntarme sobre beneficios, educación inclusiva, accesibilidad y más. Si no sé la respuesta, te ayudaré a encontrarla.',
+                '¡Estoy aquí para ayudarte! 😊'
+            ],
+            description: '',
+            defaultLanguage: 'es',
+            i18n: {
+                es: {
+                    title: 'JustiBot👋',
+                    subtitle: 'Asistente Legal sobre Discapacidad',
+                    inputPlaceholder: '¿En qué puedo ayudarte?',
+                    sendButtonTooltip: 'Enviar',
+                }
+            }
+        });
+    </script>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,298 @@
+/**
+ * =================================================================
+ * ESTILOS COMUNES PARA LA PLATAFORMA JURÍDICA INCLUSIVA
+ * =================================================================
+ * Este archivo contiene los estilos compartidos entre todas las
+ * páginas del sitio, como estilos para botones, tarjetas,
+ * secciones y animaciones.
+ */
+
+/* === Prevención de FOUC === */
+/* Oculta el cuerpo hasta que los componentes se hayan cargado con JS */
+body {
+    background-color: var(--light-bg); /* */
+    overflow-x: hidden; /* */
+    visibility: hidden; /* Oculta hasta que se añada la clase 'loaded' */
+}
+
+body.loaded {
+    visibility: visible;
+}
+
+
+/* === Componentes Reutilizables === */
+
+/* Estilo para las tarjetas principales del sitio */
+.card-ucsc {
+    background-color: var(--white); /* */
+    border-radius: 12px; /* */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* */
+}
+
+.card-ucsc:hover {
+    transform: translateY(-5px); /* */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* */
+}
+
+/* Estilo para los botones principales (rojos) */
+.btn-ucsc {
+    background-color: var(--primary-color); /* */
+    color: var(--white); /* */
+    transition: all 0.3s ease; /* */
+}
+
+.btn-ucsc:hover {
+    background-color: var(--primary-dark); /* */
+    color: var(--white); /* */
+    transform: translateY(-2px); /* */
+}
+
+
+/* === Estilos de Secciones y Títulos === */
+
+/* Estilo base para la sección principal (Hero) */
+.hero-section {
+    background: linear-gradient(135deg, rgba(183, 46, 41, 0.8), rgba(52, 64, 85, 0.9)), center/cover no-repeat; /* */
+    color: var(--white); /* */
+    padding: 100px 0; /* */
+}
+
+/* Encabezados de sección con línea decorativa */
+.section-heading {
+    position: relative; /* */
+    margin-bottom: 40px; /* */
+}
+
+.section-heading:after {
+    content: ''; /* */
+    position: absolute; /* */
+    bottom: -10px; /* */
+    left: 50%; /* */
+    transform: translateX(-50%); /* */
+    width: 70px; /* */
+    height: 3px; /* */
+    background-color: var(--primary-color); /* */
+}
+
+
+/* === Clases de Utilidad y Animaciones === */
+
+/* Clases para animaciones de aparición en scroll */
+.hidden {
+    opacity: 0; /* */
+    transform: translateY(20px); /* */
+    transition: all 0.6s ease; /* */
+}
+
+.show {
+    opacity: 1; /* */
+    transform: translateY(0); /* */
+}
+
+/* Clases de color para textos y fondos */
+.text-primary-color {
+    color: var(--primary-color); /* */
+}
+
+.background-primary-color {
+    background-color: var(--primary-color); /* */
+}
+
+/* Estados de foco mejorados */
+.btn:focus,
+.form-control:focus,
+.filter-btn:focus {
+    box-shadow: 0 0 0 3px rgba(183, 46, 41, 0.25);
+    outline: none;
+}
+/* Estilo para el resaltado de lectura */
+
+.reading-highlight {
+    background-color: #fcf8e3; /* Un amarillo pálido */
+    color: #8a6d3b !important; /* Texto oscuro para contraste */
+    box-shadow: 0 0 5px #fcf8e3;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Estilo para el modo de alto contraste */
+body.high-contrast .reading-highlight {
+    background-color: #004085 !important; /* Azul oscuro */
+    color: #cce5ff !important; /* Texto azul claro */
+    border: 1px solid #cce5ff;
+}
+
+/* Filtro de Recursos */
+.resource-item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.resource-item.resource-hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    display: none; /* Se oculta al finalizar la transición para no ocupar espacio */
+}
+
+
+/* Notificaciones Personalizadas */
+.custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1060; /* Encima de la mayoría de los elementos */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    min-width: 300px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateX(120%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.custom-notification.show {
+    transform: translateX(0);
+}
+
+.custom-notification.notification-info { 
+    background-color: #0d6efd; 
+}
+.custom-notification.notification-success { 
+    background-color: #198754; 
+}
+.custom-notification.notification-error {
+    background-color: #dc3545; 
+}
+
+.btn-close-notif {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    margin-left: 15px;
+    opacity: 0.8;
+}
+
+.btn-close-notif:hover {
+    opacity: 1;
+}
+
+/**
+ * =================================================================
+ * ESTILOS PERSONALIZADOS PARA EL CHATBOT N8N "JustiBot"
+ * =================================================================
+ * Estos estilos sobrescriben los estilos por defecto del chatbot
+ * para que coincidan con la identidad de la Plataforma Jurídica UCSC.
+ */
+
+/* === Cabecera del Chat === */
+.n8n-chat .chat-header {
+    background-color: var(--primary-color) !important; /* Rojo de la marca */
+    color: var(--white) !important;
+    border-radius: 8px 8px 0 0; /* Bordes redondeados solo arriba */
+}
+
+/* Título y subtítulo en la cabecera */
+.n8n-chat .chat-header h1,
+.n8n-chat .chat-header p {
+    color: var(--white) !important;
+}
+
+
+/* === Burbujas de Mensajes === */
+
+/* Mensajes del Bot */
+.n8n-chat .chat-message-from-bot .chat-message-markdown {
+    color: #333333 !important;
+}
+
+/* Mensajes del Usuario (REGLA CORREGIDA) */
+#n8n-chat .chat-message-from-user .chat-message-markdown {
+    color: var(--white) !important;
+}
+/* === Área de Escritura (Footer) === */
+
+/* Borde del campo de texto al seleccionarlo */
+.n8n-chat .chat-input textarea:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(209, 36, 33, 0.2) !important; /* Sombra de foco a juego */
+}
+
+/* Botón de Enviar */
+.n8n-chat .chat-input-send-button {
+    color: var(--primary-color) !important; /* Icono del botón en rojo */
+}
+.n8n-chat .chat-input-send-button:hover {
+    background-color: rgba(209, 36, 33, 0.1) !important; /* Fondo sutil al pasar el mouse */
+}
+
+/**
+ * =================================================================
+ * ESTILOS PARA EL BOTÓN FLOTANTE DEL CHATBOT
+ * (Versión con ícono de Font Awesome)
+ * =================================================================
+ */
+
+/* Contenedor del botón flotante */
+.n8n-chat .chat-window-toggle {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease-in-out;
+    
+    /* Centramos el contenido para el nuevo ícono */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.n8n-chat .chat-window-toggle:hover {
+    transform: scale(1.1); /* Efecto de crecimiento */
+}
+
+/* Ocultamos completamente el ícono SVG original de n8n */
+.n8n-chat .chat-window-toggle svg {
+    display: none !important;
+}
+
+/* Creamos nuestro nuevo ícono usando un pseudo-elemento ::before */
+.n8n-chat .chat-window-toggle::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900; /* Necesario para la versión sólida del ícono */
+    font-size: 26px;  /* Tamaño del ícono */
+    transition: transform 0.3s ease-in-out; /* Animación suave */
+    
+    /* Ícono por defecto (burbuja de chat) */
+    content: "\f086"; /* Este es el código Unicode para el ícono "comments" */
+}
+
+/* Cuando la ventana de chat está abierta... */
+.n8n-chat .chat-window.chat-window-opened ~ .chat-window-toggle::before {
+    /* ...cambiamos el ícono a una 'X' para cerrar */
+    content: "\f00d"; /* Este es el código Unicode para el ícono "times" (la X) */
+}
+
+.n8n-chat .chat-window-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Ocultamos el ícono SVG original que venía con el chatbot */
+.n8n-chat .chat-window-toggle svg {
+    display: none !important;
+}
+
+.n8n-chat .chat-window-toggle:hover {
+    transform: scale(1.1); /* Efecto de crecimiento al pasar el mouse */
+}
+
+/* Cambia el ícono de "cerrar" a una X para mayor claridad */
+.n8n-chat .chat-window-toggle svg {
+    transition: transform 0.3s ease;
+}
+.n8n-chat .chat-window.chat-window-opened ~ .chat-window-toggle svg {
+    transform: rotate(135deg); /* Gira la flecha para que parezca una X */
+}

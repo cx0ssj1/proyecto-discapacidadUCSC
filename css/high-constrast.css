@@ -1,0 +1,69 @@
+/* high-contrast.css */
+
+/* Reglas generales para el modo de alto contraste */
+body.high-contrast {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+}
+
+body.high-contrast div,
+body.high-contrast .hero-section{
+    background-color: #000000 !important;
+}
+
+/* Sobrescribir fondos claros y textos oscuros */
+body.high-contrast .bg-light,
+body.high-contrast .bg-white {
+    background-color: #000000 !important;
+}
+
+body.high-contrast .text-dark {
+    color: #FFFFFF !important;
+}
+
+body.high-contrast .text-muted {
+    color: #dddddd !important; /* Un gris claro para texto secundario */
+}
+
+/* Botón principal: un color de alto contraste como amarillo sobre negro */
+body.high-contrast .btn-ucsc {
+    background-color: #FFFF00 !important; /* Amarillo brillante */
+    color: #000000 !important;
+    border: 2px solid #FFFF00 !important;
+}
+
+body.high-contrast .btn-ucsc:hover {
+    background-color: #FFFFAA !important; /* Un amarillo más claro al pasar el mouse */
+}
+
+/* Tarjetas y secciones */
+body.high-contrast .card-ucsc,
+body.high-contrast .card,
+body.high-contrast .accordion-item {
+    background-color: #000000 !important;
+    border: 1px solid #FFFFFF !important;
+}
+
+/* Enlaces y textos con color primario */
+body.high-contrast .text-danger,
+body.high-contrast .text-primary-color,
+body.high-contrast .accordion-body,
+body.high-contrast li,
+body.high-contrast .benefits-highlight-content,
+body.high-contrast p,
+body.high-contrast .container {
+    color: #FFFF00 !important; /* Amarillo para destacar */
+}
+
+body.high-contrast .navbar {
+    background-color: #000 !important;
+    border-bottom: 1px solid #fff !important;
+}
+
+body.high-contrast .navbar-brand img {
+   background-color: #fff; /* Pone un fondo blanco al logo para que sea visible */
+   border-radius: 4px;
+   padding: 2px;
+}
+
+/* Continúa definiendo reglas para otros elementos según sea necesario */

@@ -19,10 +19,13 @@
     <link rel="stylesheet" href="/components/navbar/navbar.css">
     <link rel="stylesheet" href="/components/accessibility-bar/accessibility-bar.css">
     <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/high-constrast.css"> 
+    
     <!-- import js -->
     <script src="/js/inyectarComponentesIndex.js"></script>
     <script src="/js/accessibility-bar.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    
 
 </head>
 <body>
@@ -53,7 +56,7 @@
                             <div class="card-body p-0">
                                 <div class="row g-0">
                                     <div class="col-md-6 background-primary-color text-white p-5 d-flex align-items-center">
-                                        <div>
+                                        <div class="benefits-highlight-content">
                                             <h2 class="fw-bold mb-3">Guía de Trámites y Beneficios</h2>
                                             <p class="mb-4">Encuentra todos los enlaces oficiales y guías paso a paso para postular a becas, pensiones y beneficios estatales</p>
                                             <div class="row g-3 mb-4">
@@ -232,7 +235,7 @@
                             <h5 class="mt-2">Infografías Interactivas</h5>
                             <p>Leyes y derechos explicados en lenguaje simple y accesible.</p>
                             <div class="mt-auto pt-3">
-                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#resourceModal" data-resource="infografias">Ver Ejemplos</button>
+                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#resourceModal" data-resource="infografias" aria-label="Ver Ejemplos de Infografías Interactivas">Ver Ejemplos</button>
                             </div>
                         </div>
                     </div>
@@ -272,7 +275,7 @@
                             <h5 class="mt-2">Guía de Lenguaje Inclusivo</h5>
                             <p>Aprende a usar correctamente el lenguaje al referirte a personas con discapacidad.</p>
                             <div class="mt-auto pt-3">
-                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#lenguajeModal">Ver Guía</button>
+                                <button class="btn btn-ucsc" data-bs-toggle="modal" data-bs-target="#lenguajeModal" aria-label="Ver Guía de Lenguaje Inclusivo">Ver Guía</button>
                             </div>
                         </div>
                     </div>
@@ -634,7 +637,9 @@
     <!-- import jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-        <script type="module">
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+    <script type="module">
         import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
         createChat({
@@ -646,7 +651,6 @@
                 '¡Estoy aquí para ayudarte! 😊'
             ],
             description: '',
-            chatSessionKey: 'justibot-widget-session',
             defaultLanguage: 'es',
             i18n: {
                 es: {

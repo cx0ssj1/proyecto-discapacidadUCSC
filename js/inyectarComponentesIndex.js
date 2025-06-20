@@ -1,55 +1,26 @@
-fetch("/components/navbar/navbar.html")
-    .then((response) => response.text())
-    .then((data) => {
-        document.getElementById("navbar-container").innerHTML = data;                                                             
-    })
-    .catch((error) => {
-        console.error("Error al cargar el componente navbar:", error);
-    });
+const fetchPromises = [
+    fetch("/components/navbar/navbar.html").then(res => res.text()),
+    fetch("/components/footer/footer.html").then(res => res.text()),
+    fetch("/components/accessibility-bar/accessibility-bar.html").then(res => res.text()),
+    fetch("/components/modals/language-modal.html").then(res => res.text()),
+    fetch("/components/modals/normativa-modal.html").then(res => res.text()),
+    fetch("/components/modals/resource-modal.html").then(res => res.text())
+];
 
-fetch("/components/footer/footer.html")
-    .then((response) => response.text())
-    .then((data) => {
-        document.getElementById("footer-container").innerHTML = data;                                                             
+Promise.all(fetchPromises)
+    .then(([navbar, footer, accessibilityBar, langModal, normativaModal, resourceModal]) => {
+        document.getElementById("navbar-container").innerHTML = navbar;
+        document.getElementById("footer-container").innerHTML = footer;
+        document.getElementById("accessibility-bar-container").innerHTML = accessibilityBar;
+        document.getElementById("language-modal-container").innerHTML = langModal;
+        document.getElementById("normativa-modal-container").innerHTML = normativaModal;
+        document.getElementById("resource-modal-container").innerHTML = resourceModal;
+        
+        // Una vez que todos los componentes se han inyectado, muestra el body.
+        document.body.classList.add('loaded');
     })
-    .catch((error) => {
-        console.error("Error al cargar el componente footer:", error);
+    .catch(error => {
+        console.error("Error al cargar componentes:", error);
+        // Incluso si hay un error, muestra el contenido para que la página no se quede en blanco.
+        document.body.classList.add('loaded');
     });
-
-fetch("/components/accessibility-bar/accessibility-bar.html")
-    .then((response) => response.text())
-    .then((data) => {
-        document.getElementById("accessibility-bar-container").innerHTML = data;                                                             
-    })
-    .catch((error) => {
-        console.error("Error al cargar el componente accessibility-bar:", error);
-    });
-//modals
-
-fetch("/components/modals/language-modal.html")
-    .then((response) => response.text())
-    .then((data) => {
-        document.getElementById("language-modal-container").innerHTML = data;                                                             
-    })
-    .catch((error) => {
-        console.error("Error al cargar el componente language-modal:", error);
-    });
-
-fetch("/components/modals/normativa-modal.html")
-    .then((response) => response.text())
-    .then((data) => {
-        document.getElementById("normativa-modal-container").innerHTML = data;                                                             
-    })
-    .catch((error) => {
-        console.error("Error al cargar el componente normativa-modal:", error);
-    });
-
-fetch("/components/modals/resource-modal.html")
-    .then((response) => response.text())
-    .then((data) => {
-        document.getElementById("resource-modal-container").innerHTML = data;                                                             
-    })
-    .catch((error) => {
-        console.error("Error al cargar el componente faq-modal:", error);
-    });
-
