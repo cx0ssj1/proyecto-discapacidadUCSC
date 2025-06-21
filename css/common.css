@@ -198,10 +198,16 @@ body.high-contrast .reading-highlight {
  */
 
 /* === Cabecera del Chat === */
+.n8n-chat{
+    background-color: none !important;
+    background: none !important;
+    border: none !important;
+}
 .n8n-chat .chat-header {
-    background-color: var(--primary-color) !important; /* Rojo de la marca */
+    background-color: var(--primary-color) !important; 
     color: var(--white) !important;
-    border-radius: 8px 8px 0 0; /* Bordes redondeados solo arriba */
+    border: none !important; 
+    border-radius: 8px 8px 0 0; 
 }
 
 /* Título y subtítulo en la cabecera */
@@ -218,24 +224,26 @@ body.high-contrast .reading-highlight {
     color: #333333 !important;
 }
 
-/* Mensajes del Usuario (REGLA CORREGIDA) */
+/* Mensajes del Usuario */
 #n8n-chat .chat-message-from-user .chat-message-markdown {
     color: var(--white) !important;
 }
+
 /* === Área de Escritura (Footer) === */
 
 /* Borde del campo de texto al seleccionarlo */
 .n8n-chat .chat-input textarea:focus {
-    border-color: var(--primary-color) !important;
-    box-shadow: 0 0 0 3px rgba(209, 36, 33, 0.2) !important; /* Sombra de foco a juego */
+    border: none !important;
+    box-shadow: 0 0 0 3px rgba(209, 36, 33, 0.2) !important;
 }
 
 /* Botón de Enviar */
 .n8n-chat .chat-input-send-button {
-    color: var(--primary-color) !important; /* Icono del botón en rojo */
+    border: none !important; 
+    color: var(--primary-color) !important; 
 }
 .n8n-chat .chat-input-send-button:hover {
-    background-color: rgba(209, 36, 33, 0.1) !important; /* Fondo sutil al pasar el mouse */
+    background-color: rgba(209, 36, 33, 0.1) !important;
 }
 
 /**
@@ -258,7 +266,7 @@ body.high-contrast .reading-highlight {
 }
 
 .n8n-chat .chat-window-toggle:hover {
-    transform: scale(1.1); /* Efecto de crecimiento */
+    transform: scale(2.1); 
 }
 
 /* Ocultamos completamente el ícono SVG original de n8n */
@@ -269,18 +277,16 @@ body.high-contrast .reading-highlight {
 /* Creamos nuestro nuevo ícono usando un pseudo-elemento ::before */
 .n8n-chat .chat-window-toggle::before {
     font-family: "Font Awesome 6 Free";
-    font-weight: 900; /* Necesario para la versión sólida del ícono */
-    font-size: 26px;  /* Tamaño del ícono */
-    transition: transform 0.3s ease-in-out; /* Animación suave */
+    font-weight: 900; 
+    font-size: 26px;  
+    transition: transform 0.3s ease-in-out; 
     
-    /* Ícono por defecto (burbuja de chat) */
-    content: "\f086"; /* Este es el código Unicode para el ícono "comments" */
+    content: "\f086";
 }
 
 /* Cuando la ventana de chat está abierta... */
 .n8n-chat .chat-window.chat-window-opened ~ .chat-window-toggle::before {
-    /* ...cambiamos el ícono a una 'X' para cerrar */
-    content: "\f00d"; /* Este es el código Unicode para el ícono "times" (la X) */
+    content: "\f00d"; 
 }
 
 .n8n-chat .chat-window-toggle:hover {
@@ -293,7 +299,7 @@ body.high-contrast .reading-highlight {
 }
 
 .n8n-chat .chat-window-toggle:hover {
-    transform: scale(1.1); /* Efecto de crecimiento al pasar el mouse */
+    transform: scale(1.1); 
 }
 
 /* Cambia el ícono de "cerrar" a una X para mayor claridad */
@@ -301,5 +307,5 @@ body.high-contrast .reading-highlight {
     transition: transform 0.3s ease;
 }
 .n8n-chat .chat-window.chat-window-opened ~ .chat-window-toggle svg {
-    transform: rotate(135deg); /* Gira la flecha para que parezca una X */
+    transform: rotate(135deg); 
 }
