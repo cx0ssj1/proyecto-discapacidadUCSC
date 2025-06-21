@@ -10,9 +10,14 @@
 /* === Prevención de FOUC === */
 /* Oculta el cuerpo hasta que los componentes se hayan cargado con JS */
 body {
-    background-color: var(--light-bg); /* */
-    overflow-x: hidden; /* */
-    visibility: hidden; /* Oculta hasta que se añada la clase 'loaded' */
+    font-family: 'Montserrat', sans-serif; /* Montserrat para el texto general y párrafos */
+    background-color: var(--light-bg);
+    overflow-x: hidden;
+    visibility: hidden; 
+}
+
+h1, h2, h3, h4, h5, h6, a, .btn, .nav-link, .navbar-brand, .fw-bold {
+    font-family: 'Ubuntu', sans-serif; /* Ubuntu para títulos y elementos destacados */
 }
 
 body.loaded {
