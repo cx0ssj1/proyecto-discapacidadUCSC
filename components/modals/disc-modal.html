@@ -1,0 +1,59 @@
+<div id="modelos-modal-container">
+    <div class="modal fade" id="modelosModal" tabindex="-1" aria-labelledby="modelosModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="modelosModalLabel">Modelos de Discapacidad</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>La forma en que entendemos la discapacidad ha evolucionado a lo largo de la historia, pasando de un enfoque de marginación a uno de derechos y autonomía.</p>
+                    <div class="accordion" id="modelosAccordion">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#modeloTradicional" aria-expanded="false" aria-controls="modeloTradicional">
+                                    <strong>1. Modelo Tradicional o de Prescindencia</strong>
+                                </button>
+                            </h2>
+                            <div id="modeloTradicional" class="accordion-collapse collapse" data-bs-parent="#modelosAccordion">
+                                <div class="accordion-body">
+                                    Concepción marcada por la marginación y el aislamiento. Las personas con discapacidad eran vistas como objetos de asistencia o caridad, dependientes de la protección del ámbito médico-sanitario o religioso, sin capacidad de decisión sobre sus vidas.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#modeloRehabilitacion" aria-expanded="false" aria-controls="modeloRehabilitacion">
+                                    <strong>2. Modelo de Rehabilitación o Médico</strong>
+                                </button>
+                            </h2>
+                            <div id="modeloRehabilitacion" class="accordion-collapse collapse" data-bs-parent="#modelosAccordion">
+                                <div class="accordion-body">
+                                    Nacido entre las guerras mundiales, este modelo otorga a la persona un rol pasivo, como receptor de servicios de rehabilitación. El objetivo es que la persona se acerque lo más posible a la "normalidad" para poder incorporarse a la sociedad.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#modeloDDHH" aria-expanded="true" aria-controls="modeloDDHH">
+                                    <strong>3. Modelo Social o de Derechos Humanos</strong>
+                                </button>
+                            </h2>
+                            <div id="modeloDDHH" class="accordion-collapse collapse show" data-bs-parent="#modelosAccordion">
+                                <div class="accordion-body">
+                                    A finales del siglo XX, se promueve que las personas con discapacidad asuman la dirección de su propia vida. Este modelo entiende que la discapacidad surge de la interacción con barreras arquitectónicas, actitudinales y de comunicación. El foco está en eliminar esas barreras y en que las personas tomen sus propias decisiones con los apoyos que requieran.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

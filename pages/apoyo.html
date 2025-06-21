@@ -84,7 +84,7 @@
 
         <!-- Instituciones principales -->
         <section class="py-5 bg-white" id="instituciones">
-            <div class="container">
+            <div class="container" id="programas-apoyo">
                 <h2 class="text-center section-heading">🏛️ Instituciones Clave</h2>
                 <p class="text-center text-muted mb-5">Organismos públicos que trabajan por los derechos de las personas con discapacidad</p>
                 
@@ -233,6 +233,19 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-4 hidden resource-item" data-category="tramites">
+                            <div class="resource-link-card">
+                                <div class="card-body">
+                                    <i class="fas fa-id-card-alt fa-2x text-success mb-3"></i>
+                                    <h6 class="card-title">Obtener Credencial de Discapacidad</h6>
+                                    <p class="card-text small text-muted">Documento oficial para acceder a beneficios. </p>
+                                    <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#credencialModal">
+                                        <i class="fas fa-book-open me-1"></i>Ver Guía Paso a Paso
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         
                         <div class="col-md-4 hidden resource-item" data-category="tramites">
                             <div class="resource-link-card">
@@ -259,6 +272,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        
                     </div>
                 </div>
 
@@ -366,6 +381,8 @@
                 </div>
             </div>
         </section>
+
+
     </main>
 
     <!-- Footer -->
@@ -401,5 +418,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/js/apoyo.js"></script>
+
+    <div id="modal-guia"></div>
 </body>
 </html>

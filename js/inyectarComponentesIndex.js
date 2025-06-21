@@ -4,17 +4,19 @@ const fetchPromises = [
     fetch("/components/accessibility-bar/accessibility-bar.html").then(res => res.text()),
     fetch("/components/modals/language-modal.html").then(res => res.text()),
     fetch("/components/modals/normativa-modal.html").then(res => res.text()),
-    fetch("/components/modals/resource-modal.html").then(res => res.text())
+    fetch("/components/modals/resource-modal.html").then(res => res.text()),
+    fetch("/components/modals/disc-modal.html").then(res => res.text())
 ];
 
 Promise.all(fetchPromises)
-    .then(([navbar, footer, accessibilityBar, langModal, normativaModal, resourceModal]) => {
+    .then(([navbar, footer, accessibilityBar, langModal, normativaModal, resourceModal, discModal]) => {
         document.getElementById("navbar-container").innerHTML = navbar;
         document.getElementById("footer-container").innerHTML = footer;
         document.getElementById("accessibility-bar-container").innerHTML = accessibilityBar;
         document.getElementById("language-modal-container").innerHTML = langModal;
         document.getElementById("normativa-modal-container").innerHTML = normativaModal;
         document.getElementById("resource-modal-container").innerHTML = resourceModal;
+        document.getElementById("disc-modal").innerHTML = discModal;
         
         // Una vez que todos los componentes se han inyectado, muestra el body.
         document.body.classList.add('loaded');

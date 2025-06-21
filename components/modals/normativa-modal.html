@@ -1,72 +1,109 @@
-<!-- Modal Normativa -->
 <div class="modal fade" id="normativaModal" tabindex="-1" aria-labelledby="normativaModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title" id="normativaModalLabel">Normativa sobre Discapacidad</h5>
+                <h5 class="modal-title" id="normativaModalLabel">Marco Legal y Normativa Clave sobre Discapacidad</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4>Tipos de Discapacidad</h4>
+                <p class="lead">Explora las leyes y convenciones más importantes que protegen y promueven los derechos de las personas con discapacidad en Chile.</p>
                 
-                <div class="row g-4 mt-2">
-                    <div class="col-md-6">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">Física o Motora</h5>
-                                <p class="card-text">Es aquella que disminuye la movilidad del cuerpo. Considera las afecciones a las estructuras de los órganos internos.</p>
+                <div class="accordion" id="normativaAccordion">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#convencion" aria-expanded="true" aria-controls="convencion">
+                                <i class="fas fa-globe-americas me-2"></i><strong>Convención Internacional sobre los Derechos de las PcD (CDPD)</strong>
+                            </button>
+                        </h2>
+                        <div id="convencion" class="accordion-collapse collapse show" data-bs-parent="#normativaAccordion">
+                            <div class="accordion-body">
+                                <p>Es el tratado de derechos humanos más importante en la materia, ratificado por Chile y publicado en 2008. Su propósito es "promover, proteger y asegurar el goce pleno y en condiciones de igualdad de todos los derechos humanos y libertades fundamentales por todas las personas con discapacidad".</p>
+                                <strong>Principios clave (Art. 3):</strong> 
+                                <ul>
+                                    <li>Respeto de la dignidad y autonomía individual.</li>
+                                    <li>No discriminación.</li>
+                                    <li>Participación e inclusión plenas y efectivas.</li>
+                                    <li>Respeto por la diferencia y aceptación.</li>
+                                    <li>Igualdad de oportunidades y accesibilidad.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">Sensorial</h5>
-                                <p class="card-text">Es aquella que afecta alguno de los sentidos. Puede ser visual o auditiva.</p>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ley20422" aria-expanded="false" aria-controls="ley20422">
+                                <i class="fas fa-balance-scale me-2"></i><strong>Ley N° 20.422: Igualdad de Oportunidades e Inclusión Social</strong>
+                            </button>
+                        </h2>
+                        <div id="ley20422" class="accordion-collapse collapse" data-bs-parent="#normativaAccordion">
+                            <div class="accordion-body">
+                                <p>Publicada en 2010 , esta es la principal ley nacional que establece normas sobre igualdad de oportunidades e inclusión social. Nació como respuesta a la Convención Internacional.</p>
+                                <p>Define conceptos clave como "persona con discapacidad" , "discriminación"  y "accesibilidad universal". Además, establece la obligación de realizar "ajustes necesarios" para adecuar mecanismos de selección en educación y empleo.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">Mental o Psíquica</h5>
-                                <p class="card-text">Es aquella que deriva de una enfermedad mental, la que puede ser de carácter permanente o transitorio.</p>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ley21545" aria-expanded="false" aria-controls="ley21545">
+                                <i class="fas fa-puzzle-piece me-2"></i><strong>Ley N° 21.545: Ley de Autismo</strong>
+                            </button>
+                        </h2>
+                        <div id="ley21545" class="accordion-collapse collapse" data-bs-parent="#normativaAccordion">
+                            <div class="accordion-body">
+                                <p>Esta ley promueve la inclusión, la atención integral y la protección de los derechos de las personas con trastorno del espectro autista en los ámbitos social, de salud y educación.</p>
+                                <strong>Principios destacados:</strong> 
+                                <ul>
+                                    <li>Trato digno.</li>
+                                    <li>Autonomía progresiva.</li>
+                                    <li>Perspectiva de género.</li>
+                                    <li>Detección temprana y seguimiento continuo.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">Intelectual</h5>
-                                <p class="card-text">Es aquella que se caracteriza por las limitaciones de las funciones intelectuales y de la conducta adaptativa en el entorno. Se origina antes de los 18 años.</p>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ley20609" aria-expanded="false" aria-controls="ley20609">
+                                <i class="fas fa-ban me-2"></i><strong>Ley N° 20.609: Medidas contra la Discriminación</strong>
+                            </button>
+                        </h2>
+                        <div id="ley20609" class="accordion-collapse collapse" data-bs-parent="#normativaAccordion">
+                            <div class="accordion-body">
+                                <p>También conocida como "Ley Zamudio", establece medidas contra la discriminación. En su artículo 2°, define "discriminación arbitraria" y menciona explícitamente la discapacidad como una de las categorías protegidas. Es un mecanismo judicial clave para restablecer el derecho vulnerado.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">Múltiple</h5>
-                                <p class="card-text">Aquellas personas que presentan dos o más discapacidades.</p>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tiposDiscapacidad" aria-expanded="false" aria-controls="tiposDiscapacidad">
+                                <i class="fas fa-tags me-2"></i><strong>Tipos de Discapacidad (Definiciones)</strong>
+                            </button>
+                        </h2>
+                        <div id="tiposDiscapacidad" class="accordion-collapse collapse" data-bs-parent="#normativaAccordion">
+                            <div class="accordion-body">
+                                <p>La discapacidad no es única, existen diversos tipos y la normativa los reconoce.</p>
+                                <ul>
+                                    <li><strong>Física o Motora:</strong> Disminución de la movilidad del cuerpo.</li>
+                                    <li><strong>Sensorial:</strong> Afecta alguno de los sentidos, como la vista o la audición.</li>
+                                    <li><strong>Psicosocial (Mental o Psíquica):</strong> Deriva de una enfermedad mental, que puede ser permanente o transitoria.</li>
+                                    <li><strong>Intelectual:</strong> Se caracteriza por limitaciones en las funciones intelectuales y en la conducta adaptativa, originada antes de los 18 años.</li>
+                                    <li><strong>Múltiple:</strong> Presenta dos o más discapacidades.</li>
+                                    <li><strong>Invisible:</strong> Discapacidades que no son evidentes a simple vista.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">Invisible</h5>
-                                <p class="card-text">La discapacidad no siempre es visible, existen discapacidades que no son evidentes a simple vista.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-4">
-                    <p class="fst-italic">La normativa chilena contempla leyes en diversas áreas: Laboral, Salud, Tránsito, Previsional, Matrimonio, Educacional, Social, Deporte, Aduanero, Electoral, entre otros.</p>
                 </div>
             </div>
             <div class="modal-footer">
+                <a href="/pages/apoyo.html" class="btn btn-outline-secondary me-auto">Ver más recursos</a>
+                <button type="button" class="btn btn-ucsc" id="downloadNormativa">Descargar Resumen</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-ucsc" id="downloadNormativa">Descargar Normativa</button>
             </div>
         </div>
     </div>
