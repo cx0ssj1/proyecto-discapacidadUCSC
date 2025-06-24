@@ -117,16 +117,16 @@ body.loaded {
 /* Estilo para el resaltado de lectura */
 
 .reading-highlight {
-    background-color: #fcf8e3; /* Un amarillo pálido */
-    color: #8a6d3b !important; /* Texto oscuro para contraste */
+    background-color: #fcf8e3; 
+    color: #8a6d3b !important; 
     box-shadow: 0 0 5px #fcf8e3;
     transition: all 0.2s ease-in-out;
 }
 
 /* Estilo para el modo de alto contraste */
 body.high-contrast .reading-highlight {
-    background-color: #004085 !important; /* Azul oscuro */
-    color: #cce5ff !important; /* Texto azul claro */
+    background-color: #004085 !important;
+    color: #cce5ff !important; 
     border: 1px solid #cce5ff;
 }
 
@@ -138,7 +138,7 @@ body.high-contrast .reading-highlight {
 .resource-item.resource-hidden {
     opacity: 0;
     transform: scale(0.9);
-    display: none; /* Se oculta al finalizar la transición para no ocupar espacio */
+    display: none; 
 }
 
 
@@ -147,7 +147,7 @@ body.high-contrast .reading-highlight {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1060; /* Encima de la mayoría de los elementos */
+    z-index: 1060; 
     padding: 15px 20px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -193,8 +193,6 @@ body.high-contrast .reading-highlight {
  * =================================================================
  * ESTILOS PERSONALIZADOS PARA EL CHATBOT N8N "JustiBot"
  * =================================================================
- * Estos estilos sobrescriben los estilos por defecto del chatbot
- * para que coincidan con la identidad de la Plataforma Jurídica UCSC.
  */
 
 /* === Cabecera del Chat === */
@@ -308,4 +306,93 @@ body.high-contrast .reading-highlight {
 }
 .n8n-chat .chat-window.chat-window-opened ~ .chat-window-toggle svg {
     transform: rotate(135deg); 
+}
+
+
+/**
+ * =================================================================
+ * ESTILOS PARA LA ENCUESTA DE EVALUACIÓN
+ * =================================================================
+ */
+
+.evaluation-section {
+    transition: all 0.3s ease;
+}
+
+.evaluation-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.btn-check:checked + .btn {
+    transform: scale(1.02);
+}
+
+.info-tooltip {
+    cursor: help;
+    text-decoration: underline dotted;
+}
+
+.progress-container {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.score-indicator {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.score-high { background-color: #d4edda; color: #155724; }
+.score-medium { background-color: #fff3cd; color: #856404; }
+.score-low { background-color: #f8d7da; color: #721c24; }
+
+.section-summary {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--primary-color);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 0 8px 8px 0;
+}
+
+.validation-error {
+    border: 2px solid #dc3545 !important;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.step-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.step-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #dee2e6;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.step-dot.active {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.step-dot.completed {
+    background-color: #28a745;
 }

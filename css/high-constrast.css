@@ -22,18 +22,18 @@ body.high-contrast .text-dark {
 }
 
 body.high-contrast .text-muted {
-    color: #dddddd !important; /* Un gris claro para texto secundario */
+    color: #dddddd !important; 
 }
 
 /* Botón principal: un color de alto contraste como amarillo sobre negro */
 body.high-contrast .btn-ucsc {
-    background-color: #FFFF00 !important; /* Amarillo brillante */
+    background-color: #FFFF00 !important; 
     color: #000000 !important;
     border: 2px solid #FFFF00 !important;
 }
 
 body.high-contrast .btn-ucsc:hover {
-    background-color: #FFFFAA !important; /* Un amarillo más claro al pasar el mouse */
+    background-color: #FFFFAA !important;  
 }
 
 /* Tarjetas y secciones */
@@ -52,7 +52,7 @@ body.high-contrast li,
 body.high-contrast .benefits-highlight-content,
 body.high-contrast p,
 body.high-contrast .container {
-    color: #FFFF00 !important; /* Amarillo para destacar */
+    color: #FFFF00 !important; 
 }
 
 body.high-contrast .navbar {
@@ -61,9 +61,7 @@ body.high-contrast .navbar {
 }
 
 body.high-contrast .navbar-brand img {
-   background-color: #fff; /* Pone un fondo blanco al logo para que sea visible */
+   background-color: #fff; 
    border-radius: 4px;
    padding: 2px;
 }
-
-/* Continúa definiendo reglas para otros elementos según sea necesario */
