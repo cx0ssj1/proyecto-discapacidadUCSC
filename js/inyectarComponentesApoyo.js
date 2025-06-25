@@ -1,31 +1,24 @@
-// Array con las promesas de fetch para cada componente de la página de apoyo
 const fetchPromises = [
-    fetch("/components/navbar/navbar.html").then(response => response.text()),
-    fetch("/components/footer/footer.html").then(response => response.text()),
-    fetch("/components/accessibility-bar/accessibility-bar.html").then(response => response.text()),
+    fetch("/components/navbar/navbar.html").then(res => res.text()),
+    fetch("/components/footer/footer.html").then(res => res.text()),
+    fetch("/components/accessibility-bar/accessibility-bar.html").then(res => res.text()),
     fetch("/components/modals/guiacred-modal.html").then(res => res.text())
 ];
+
 Promise.all(fetchPromises)
-    .then(([navbarHtml, footerHtml, accessibilityBarHtml, guiacredHtml]) => {
-        const navbarContainer = document.getElementById("navbar-container");
-        if (navbarContainer) {
-            navbarContainer.innerHTML = navbarHtml;
-        }
-        const footerContainer = document.getElementById("footer-container");
-        if (footerContainer) {
-            footerContainer.innerHTML = footerHtml;
-        }
-        const accessibilityBarContainer = document.getElementById("accessibility-bar-container");
-        if (accessibilityBarContainer) {
-            accessibilityBarContainer.innerHTML = accessibilityBarHtml;
-        }
-        const guiacredModalContainer = document.getElementById("modal-guia");
-        if (guiacredModalContainer) {
-            guiacredModalContainer.innerHTML = guiacredHtml;
-        }
+    .then(([navbar, footer, accessibilityBar,guiacredHtml]) => {
+        document.getElementById("navbar-container").innerHTML = navbar;
+        document.getElementById("footer-container").innerHTML = footer;
+        document.getElementById("accessibility-bar-container").innerHTML = accessibilityBar;
+        document.getElementById("modal-guia").innerHTML = guiacredHtml;
+        
+        // Dispara un evento personalizado para indicar que los componentes se han cargado.
+        window.dispatchEvent(new CustomEvent('componentsLoaded'));
+        // Una vez que todos los componentes se han inyectado, muestra el body.
         document.body.classList.add('loaded');
     })
     .catch(error => {
-        console.error("Error al cargar componentes para la página de apoyo:", error);
+        console.error("Error al cargar componentes:", error);
+        // Incluso si hay un error, muestra el contenido para que la página no se quede en blanco.
         document.body.classList.add('loaded');
     });

@@ -18,6 +18,8 @@ Promise.all(fetchPromises)
         document.getElementById("resource-modal-container").innerHTML = resourceModal;
         document.getElementById("disc-modal").innerHTML = discModal;
         
+        // Dispara un evento personalizado para indicar que los componentes se han cargado.
+        window.dispatchEvent(new CustomEvent('componentsLoaded'));
         // Una vez que todos los componentes se han inyectado, muestra el body.
         document.body.classList.add('loaded');
     })

@@ -1,13 +1,10 @@
 /**
  * accessibility-bar.js
- *
- * Script de accesibilidad sin funcionalidad de arrastre para máxima estabilidad.
- * Mantiene las preferencias del usuario (texto y contraste) con localStorage.
+ * Este script gestiona la barra de accesibilidad del sitio web.
  */
-
 (function () {
-    document.addEventListener('DOMContentLoaded', function () {
-
+    window.addEventListener('componentsLoaded', () => {
+        
         const A11Y_SETTINGS_KEY = 'ucscA11ySettings';
 
         const elements = {
@@ -18,6 +15,14 @@
             readPageBtn: document.getElementById('read-page'),
             mainContent: document.querySelector('main')
         };
+
+        // Medida de seguridad final: si la barra sigue sin encontrarse, nos detenemos.
+        if (!elements.bar) {
+            console.error('Error Crítico: El evento "componentsLoaded" se disparó, pero el elemento #accessibility-bar sigue sin encontrarse en el DOM.');
+            return;
+        }
+        
+        console.log('Componentes cargados. Barra de accesibilidad inicializada.');
 
         const state = {
             isReading: false,
@@ -34,7 +39,6 @@
             if (savedSettings.highContrast) applyContrast(savedSettings.highContrast);
         }
 
-        // Guarda una preferencia
         function saveSetting(key, value) {
             const settings = JSON.parse(localStorage.getItem(A11Y_SETTINGS_KEY)) || {};
             settings[key] = value;
@@ -64,7 +68,7 @@
                 state.currentlyReadingElement.classList.remove('reading-highlight');
             }
             state.isReading = false;
-            if(elements.readPageBtn) {
+            if (elements.readPageBtn) {
                 elements.readPageBtn.classList.remove('active');
                 elements.readPageBtn.querySelector('span').textContent = 'Leer';
             }
@@ -93,13 +97,13 @@
                 elementToRead.scrollIntoView({ behavior: 'smooth', block: 'center' });
             };
             utterance.onend = playNextInPlaylist;
-            utterance.onerror = playNextInPlaylist;
+            utterance.onerror = playNextInPlaylist; // En caso de error, simplemente salta al siguiente
             state.speechSynthesis.speak(utterance);
         }
 
         function startReading() {
             if (!elements.mainContent) {
-                alert('No se encontró contenido principal para leer.');
+                console.warn('No se encontró contenido principal para leer.');
                 return;
             }
             state.isReading = true;
@@ -119,25 +123,25 @@
             }
         }
 
-        // --- Inicialización ---
         function init() {
-            if (!elements.bar) return;
-
-            // Asigna los eventos a los botones
+            // Asignación de eventos a los botones
             if (elements.increaseTextBtn) elements.increaseTextBtn.addEventListener('click', () => changeTextSize(10));
             if (elements.decreaseTextBtn) elements.decreaseTextBtn.addEventListener('click', () => changeTextSize(-10));
             if (elements.contrastBtn) elements.contrastBtn.addEventListener('click', () => applyContrast(!document.body.classList.contains('high-contrast')));
             if (elements.readPageBtn) elements.readPageBtn.addEventListener('click', handleSpeechToggle);
-            
+
             // Detiene la lectura si el usuario se va de la página
             window.addEventListener('beforeunload', () => {
                 if (state.isReading) stopReading();
             });
 
-            // Carga las preferencias al iniciar
+            // Carga las preferencias guardadas por el usuario
             loadSettings();
         }
 
+        // Llamada final a la función que conecta todo
         init();
-    });
-})();
+
+    }); // Fin del addEventListener 'componentsLoaded'
+
+})(); // Fin del script

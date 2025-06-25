@@ -26,7 +26,8 @@ body.high-contrast .text-muted {
 }
 
 /* Botón principal: un color de alto contraste como amarillo sobre negro */
-body.high-contrast .btn-ucsc {
+body.high-contrast .btn-ucsc,
+body.high-contrast button[type="submit"] {
     background-color: #FFFF00 !important; 
     color: #000000 !important;
     border: 2px solid #FFFF00 !important;
@@ -51,7 +52,14 @@ body.high-contrast .accordion-body,
 body.high-contrast li,
 body.high-contrast .benefits-highlight-content,
 body.high-contrast p,
-body.high-contrast .container {
+body.high-contrast .container,
+body.high-contrast label,
+body.high-contrast .text-muted,
+body.high-contrast .card-header,
+body.high-contrast h5,
+body.high-contrast a,
+body.high-contrast .nav-link,
+body.high-contrast .badge{
     color: #FFFF00 !important; 
 }
 
@@ -60,6 +68,14 @@ body.high-contrast .navbar {
     border-bottom: 1px solid #fff !important;
 }
 
+body.high-contrast textarea,
+body.high-contrast input[type="text"],
+body.high-contrast select,
+body.high-contrast input[type="checkbox"]{
+    background-color: #292828 !important;
+    color: #FFFF00 !important;
+    border: 1px solid #FFFFFF !important;
+}
 body.high-contrast .navbar-brand img {
    background-color: #fff; 
    border-radius: 4px;
