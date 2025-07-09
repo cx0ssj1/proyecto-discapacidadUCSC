@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const evaluacionForm = document.getElementById('evaluacionForm');
     if (!evaluacionForm) return;
-
+    gestionarCheckboxesDiscapacidad()
     // --- ELEMENTOS DEL DOM ---
     const institucionSelect = document.getElementById('institucion');
     const otraInstitucionInput = document.getElementById('otraInstitucion');
@@ -21,13 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Inicializar tooltips de Bootstrap
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 
-    // Función mejorada para actualizar la barra de progreso
     function updateProgressBar() {
         if (!sections.length || !progressBar) return;
         const totalSteps = sections.length;
@@ -45,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
         progressBar.style.width = `${progressPercentage}%`;
         progressText.textContent = `Paso ${currentStep + 1} de ${totalSteps}`;
 
-        // Actualizar indicadores de pasos
         stepDots.forEach((dot, index) => {
             dot.classList.remove('active', 'completed');
             if (index < currentStep) {
@@ -56,13 +53,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Función para validar secciones completadas
     function validateSection(sectionId) {
         const section = document.getElementById(sectionId);
         const requiredFields = section.querySelectorAll('[required]');
         const radioGroups = {};
         
-        // Agrupar radios por nombre
         section.querySelectorAll('input[type="radio"]').forEach(radio => {
             if (!radioGroups[radio.name]) {
                 radioGroups[radio.name] = [];
@@ -72,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let isValid = true;
 
-        // Validar campos requeridos
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 field.classList.add('validation-error');
@@ -85,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return isValid;
     }
 
-    // Función para calcular puntuaciones
     function calcularPuntuaciones() {
         const categorias = ['fisica', 'tecnologica', 'academica', 'servicios'];
         const puntuaciones = {};
@@ -106,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const promedioCategoria = (puntuacionCategoria / (preguntasCategoria * 2)) * 100;
                 puntuaciones[categoria] = Math.round(promedioCategoria);
                 totalGeneral += puntuacionCategoria;
-                totalPreguntas += preguntasCategoria * 2; // Máximo 2 puntos por pregunta
+                totalPreguntas += preguntasCategoria * 2;
             }
         });
 
@@ -116,12 +109,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return puntuaciones;
     }
 
-    // Función para mostrar el resumen
     function mostrarResumen() {
         const puntuaciones = calcularPuntuaciones();
         const resumenCard = document.getElementById('resumen-evaluacion');
         
-        // Actualizar puntuaciones en el resumen
         Object.keys(puntuaciones).forEach(categoria => {
             const elemento = document.getElementById(`score-${categoria}`);
             if (elemento) {
@@ -139,12 +130,31 @@ document.addEventListener('DOMContentLoaded', function () {
         if (puntuacion >= 40) return 'score-medium';
         return 'score-low';
     }
+    function gestionarCheckboxesDiscapacidad() {
+        const sinDiscapacidadCheckbox = document.getElementById('sin_discapacidad');
+        const otrosCheckboxes = document.querySelectorAll('input[name="tipo_discapacidad"]:not(#sin_discapacidad)');
+
+        sinDiscapacidadCheckbox.addEventListener('change', function() {
+            const deshabilitar = this.checked;
+            otrosCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                checkbox.disabled = deshabilitar;
+            });
+        });
+
+        otrosCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    sinDiscapacidadCheckbox.checked = false;
+                }
+            });
+        });
+    }
 
     // Event listeners para actualizar progreso
     window.addEventListener('scroll', updateProgressBar);
     updateProgressBar();
 
-    // Mostrar resumen cuando se completen las secciones principales
     evaluacionForm.addEventListener('change', function(e) {
         if (e.target.type === 'radio') {
             setTimeout(mostrarResumen, 500);
@@ -196,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             return datosParaEnviar;
         }
+
 
         const datosFinales = recopilarDatos();
         
