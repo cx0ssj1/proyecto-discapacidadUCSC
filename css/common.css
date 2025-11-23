@@ -102,20 +102,6 @@ body.loaded {
 .text-primary-color {
     color: var(--primary-color); /* */
 }
-
-.background-primary-color {
-    background-color: var(--primary-color); /* */
-}
-
-/* Estados de foco mejorados */
-.btn:focus,
-.form-control:focus,
-.filter-btn:focus {
-    box-shadow: 0 0 0 3px rgba(183, 46, 41, 0.25);
-    outline: none;
-}
-/* Estilo para el resaltado de lectura */
-
 .reading-highlight {
     background-color: #fcf8e3; 
     color: #8a6d3b !important; 

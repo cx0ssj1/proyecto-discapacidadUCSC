@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="https://ucsc.cl/content/uploads/2024/07/logo_facultad_derecho-03.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://ucsc.cl/content/uploads/2024/07/logo_facultad_derecho-03.png"
+        type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recursos y Apoyo - Plataforma Jurídica Inclusiva</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+    <!-- jQuery removed from head to avoid duplication -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Ubuntu:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -22,400 +26,28 @@
     <link rel="stylesheet" href="/components/accessibility-bar/accessibility-bar.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/high-constrast.css">
-     
-    <script src="/js/inyectarComponentesApoyo.js"></script>
-    
-    <!-- import jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-</head>
-<body>
-    <!-- Navbar -->
-    <div id="navbar-container"></div>
 
-    <!-- Accessibility Bar -->
-    <div id="accessibility-bar-container"></div>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container text-center">
-            <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">Recursos y Apoyo</h1>
-            <p class="lead animate__animated animate__fadeInUp">Encuentra instituciones, trámites, becas y recursos prácticos para ejercer tus derechos</p>
-            <div class="mt-4 animate__animated animate__fadeInUp animate__delay-1s">
-                <a href="#instituciones" class="btn btn-light btn-lg me-2">Ver Instituciones</a>
-                <a href="#recursos-practicos" class="btn btn-outline-light btn-lg">Recursos Prácticos</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Buscador de recursos -->
-        <section class="py-4 bg-white">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="search-box hidden">
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-text bg-white border-end-0">
-                                    <i class="fas fa-search text-muted"></i>
-                                </span>
-                                <input type="text" class="form-control border-start-0" id="searchInput" placeholder="Buscar recursos, instituciones o trámites...">
-                                <button class="btn btn-ucsc" type="button" id="searchBtn">Buscar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Filtros rápidos -->
-        <section class="py-3 bg-light">
-            <div class="container">
-                <div class="text-center hidden">
-                    <h6 class="mb-3">Filtros rápidos:</h6>
-                    <div class="btn-group flex-wrap" role="group" aria-label="Filtros rápidos">
-                        <button type="button" class="btn btn-outline-secondary active filter-btn mb-2" data-filter="all">Todos</button>
-                        <button type="button" class="btn btn-outline-secondary filter-btn mb-2" data-filter="instituciones">Instituciones</button>
-                        <button type="button" class="btn btn-outline-secondary filter-btn mb-2" data-filter="becas">Becas</button>
-                        <button type="button" class="btn btn-outline-secondary filter-btn mb-2" data-filter="tramites">Trámites</button>
-                        <button type="button" class="btn btn-outline-secondary filter-btn mb-2" data-filter="formularios">Formularios</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Instituciones principales -->
-        <section class="py-5 bg-white" id="instituciones">
-            <div class="container" id="programas-apoyo">
-                <h2 class="text-center section-heading">🏛️ Instituciones Clave</h2>
-                <p class="text-center text-muted mb-5">Organismos públicos que trabajan por los derechos de las personas con discapacidad</p>
-                
-                <div class="row g-4">
-                    <div class="col-lg-6 hidden resource-item" data-category="instituciones">
-                        <div class="card-ucsc p-4 h-100">
-                            <div class="d-flex align-items-start">
-                                <div class="institution-icon me-3">
-                                    <i class="fas fa-building fa-2x text-primary"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h4 class="text-danger mb-2">SENADIS</h4>
-                                    <p class="text-muted small mb-2">Servicio Nacional de la Discapacidad</p>
-                                    <p class="mb-3">Promueve la inclusión social de personas con discapacidad a través de políticas públicas, programas y ayudas técnicas.</p>
-                                    
-                                    <div class="mb-3">
-                                        <strong>Programas destacados:</strong>
-                                        <ul class="list-unstyled mt-2">
-                                            <li><i class="fas fa-cog me-2 text-primary"></i>Ayudas Técnicas</li>
-                                            <li><i class="fas fa-money-bill me-2 text-primary"></i>Postulación a pensiones</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="d-flex flex-wrap gap-2">
-                                        <a href="https://www.senadis.gob.cl" target="_blank" class="btn btn-ucsc btn-sm">
-                                            <i class="fas fa-external-link-alt me-1"></i>Sitio Web
-                                        </a>
-                                        <a href="https://www.senadis.gob.cl/buscador?search=ayudas+tecnicas" target="_blank" class="btn btn-outline-primary btn-sm">
-                                            <i class="fas fa-tools me-1"></i>Ayudas Técnicas
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 hidden resource-item" data-category="instituciones">
-                        <div class="card-ucsc p-4 h-100">
-                            <div class="d-flex align-items-start">
-                                <div class="institution-icon me-3">
-                                    <i class="fas fa-user-md fa-2x text-success"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h4 class="text-danger mb-2">COMPIN</h4>
-                                    <p class="text-muted small mb-2">Comisión de Medicina Preventiva e Invalidez</p>
-                                    <p class="mb-3">Organismo encargado de evaluar licencias médicas y certificados de discapacidad para acceder a beneficios del Estado.</p>
-                                    
-                                    <div class="mb-3">
-                                        <strong>Servicios:</strong>
-                                        <ul class="list-unstyled mt-2">
-                                            <li><i class="fas fa-certificate me-2 text-success"></i>Certificación de discapacidad</li>
-                                            <li><i class="fas fa-clipboard-check me-2 text-success"></i>Evaluación de invalidez</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <a href="https://milicenciamedica.cl/invalidez.html" target="_blank" class="btn btn-success btn-sm">
-                                        <i class="fas fa-external-link-alt me-1"></i>Sitio Web
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 hidden resource-item" data-category="instituciones">
-                        <div class="card-ucsc p-4 h-100">
-                            <div class="d-flex align-items-start">
-                                <div class="institution-icon me-3">
-                                    <i class="fas fa-child fa-2x text-info"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h4 class="text-danger mb-2">Defensoría de la Niñez</h4>
-                                    <p class="text-muted small mb-2">Protección de derechos de niños y adolescentes</p>
-                                    <p class="mb-3">Institución autónoma que protege y promueve los derechos de niños, niñas y adolescentes, incluyendo aquellos con discapacidad.</p>
-                                    
-                                    <div class="mb-3">
-                                        <strong>Acciones:</strong>
-                                        <ul class="list-unstyled mt-2">
-                                            <li><i class="fas fa-shield-alt me-2 text-info"></i>Supervisión de derechos</li>
-                                            <li><i class="fas fa-exclamation-triangle me-2 text-info"></i>Atención de denuncias</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <a href="https://www.defensorianinez.cl" target="_blank" class="btn btn-info btn-sm">
-                                        <i class="fas fa-external-link-alt me-1"></i>Sitio Web
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 hidden resource-item" data-category="instituciones tramites">
-                        <div class="card-ucsc p-4 h-100">
-                            <div class="d-flex align-items-start">
-                                <div class="institution-icon me-3">
-                                    <i class="fas fa-clipboard-list fa-2x text-warning"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h4 class="text-danger mb-2">ChileAtiende</h4>
-                                    <p class="text-muted small mb-2">Red estatal multiservicio</p>
-                                    <p class="mb-3">Red que permite realizar trámites y obtener información de múltiples servicios públicos desde un mismo punto.</p>
-                                    
-                                    <div class="mb-3">
-                                        <strong>Servicios:</strong>
-                                        <ul class="list-unstyled mt-2">
-                                            <li><i class="fas fa-file-alt me-2 text-warning"></i>Trámites en línea</li>
-                                            <li><i class="fas fa-info-circle me-2 text-warning"></i>Información de servicios</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="d-flex flex-wrap gap-2">
-                                        <a href="https://www.chileatiende.gob.cl" target="_blank" class="btn btn-warning btn-sm">
-                                            <i class="fas fa-external-link-alt me-1"></i>Sitio Web
-                                        </a>
-                                        <a href="https://www.chileatiende.gob.cl/buscar?query=discapacidad" target="_blank" class="btn btn-outline-warning btn-sm">
-                                            <i class="fas fa-search me-1"></i>Buscar Trámites
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Recursos Prácticos -->
-        <section class="py-5 bg-light" id="recursos-practicos">
-            <div class="container">
-                <h2 class="text-center section-heading">📚 Recursos Prácticos</h2>
-                
-                <!-- Guías y Trámites -->
-                <div class="resource-category mb-5">
-                    <h3 class="text-danger mb-4 hidden">
-                        <i class="fas fa-clipboard-check me-2"></i>Guías y Trámites Útiles
-                    </h3>
-                    <div class="row g-3">
-                        <div class="col-md-4 hidden resource-item" data-category="tramites">
-                            <div class="resource-link-card">
-                                <div class="card-body">
-                                    <i class="fas fa-id-card fa-2x text-primary mb-3"></i>
-                                    <h6 class="card-title">Registro Nacional de la Discapacidad</h6>
-                                    <p class="card-text small text-muted">Obtén tu certificado oficial de discapacidad</p>
-                                    <a href="https://compin.cerofilas.gob.cl" target="_blank" class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-external-link-alt me-1"></i>Ver Trámite
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 hidden resource-item" data-category="tramites">
-                            <div class="resource-link-card">
-                                <div class="card-body">
-                                    <i class="fas fa-id-card-alt fa-2x text-success mb-3"></i>
-                                    <h6 class="card-title">Obtener Credencial de Discapacidad</h6>
-                                    <p class="card-text small text-muted">Documento oficial para acceder a beneficios. </p>
-                                    <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#credencialModal">
-                                        <i class="fas fa-book-open me-1"></i>Ver Guía Paso a Paso
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4 hidden resource-item" data-category="tramites">
-                            <div class="resource-link-card">
-                                <div class="card-body">
-                                    <i class="fas fa-money-bill-wave fa-2x text-success mb-3"></i>
-                                    <h6 class="card-title">Pensión Básica Solidaria</h6>
-                                    <p class="card-text small text-muted">Postula a pensión por invalidez</p>
-                                    <a href="https://mi.chileatiende.gob.cl/tramites/sibs" target="_blank" class="btn btn-sm btn-outline-success">
-                                        <i class="fas fa-external-link-alt me-1"></i>Postular
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4 hidden resource-item" data-category="tramites">
-                            <div class="resource-link-card">
-                                <div class="card-body">
-                                    <i class="fas fa-wheelchair fa-2x text-info mb-3"></i>
-                                    <h6 class="card-title">Ayudas Técnicas SENADIS</h6>
-                                    <p class="card-text small text-muted">Accede a dispositivos de apoyo</p>
-                                    <a href="https://www.senadis.gob.cl/pag/780/2095/convocatoria_2025_programa_regular_de_ayudas_tecnicas" target="_blank" class="btn btn-sm btn-outline-info">
-                                        <i class="fas fa-external-link-alt me-1"></i>Acceder
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-
-                <!-- Becas y Apoyos Educativos -->
-                <div class="resource-category mb-5">
-                    <h3 class="text-danger mb-4 hidden">
-                        <i class="fas fa-graduation-cap me-2"></i>Becas y Apoyos Educativos
-                    </h3>
-                    <div class="row g-3">
-                        <div class="col-md-4 hidden resource-item" data-category="becas">
-                            <div class="resource-link-card">
-                                <div class="card-body">
-                                    <i class="fas fa-school fa-2x text-warning mb-3"></i>
-                                    <h6 class="card-title">Beneficios Estudiantiles</h6>
-                                    <p class="card-text small text-muted">Becas y ayudas del Mineduc</p>
-                                    <a href="https://portal.beneficiosestudiantiles.cl/" target="_blank" class="btn btn-sm btn-outline-warning">
-                                        <i class="fas fa-external-link-alt me-1"></i>Ver Beneficios
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4 hidden resource-item" data-category="becas">
-                            <div class="resource-link-card">
-                                <div class="card-body">
-                                    <i class="fas fa-users fa-2x text-danger mb-3"></i>
-                                    <h6 class="card-title">Beca Integración Territorial (BIT)</h6>
-                                    <p class="card-text small text-muted">Apoyo económico JUNAEB</p>
-                                    <a href="https://www.junaeb.cl/beca-integracion-territorial-bit-educacion-superior/" target="_blank" class="btn btn-sm btn-outline-danger">
-                                        <i class="fas fa-external-link-alt me-1"></i>Más Info
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4 hidden resource-item" data-category="becas">
-                            <div class="resource-link-card">
-                                <div class="card-body">
-                                    <i class="fas fa-file-signature fa-2x text-secondary mb-3"></i>
-                                    <h6 class="card-title">FUAS</h6>
-                                    <p class="card-text small text-muted">Formulario Único de Acreditación</p>
-                                    <a href="https://www.fuas.cl" target="_blank" class="btn btn-sm btn-outline-secondary">
-                                        <i class="fas fa-external-link-alt me-1"></i>Completar
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Formularios y Modelos -->
-                <div class="resource-category">
-                    <h3 class="text-danger mb-4 hidden">
-                        <i class="fas fa-file-download me-2"></i>Modelos y Formularios
-                    </h3>
-                    <div class="row g-3">
-                        <div class="col-md-6 hidden resource-item" data-category="formularios">
-                            <div class="download-card">
-                                <div class="card-body d-flex align-items-center">
-                                    <i class="fas fa-file-pdf fa-2x text-danger me-3"></i>
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-1">Modelo de reclamo por falta de accesibilidad</h6>
-                                        <p class="small text-muted mb-0">Formato para presentar quejas sobre barreras</p>
-                                    </div>
-                                    <button class="btn btn-outline-danger btn-sm download-btn">
-                                        <i class="fas fa-download"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6 hidden resource-item" data-category="formularios">
-                            <div class="download-card">
-                                <div class="card-body d-flex align-items-center">
-                                    <i class="fas fa-file-pdf fa-2x text-primary me-3"></i>
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-1">Solicitud de certificado de discapacidad</h6>
-                                        <p class="small text-muted mb-0">Formulario para certificación oficial</p>
-                                    </div>
-                                    <button class="btn btn-outline-primary btn-sm download-btn">
-                                        <i class="fas fa-download"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Final -->
-        <section class="py-5 bg-light">
-            <div class="container text-center">
-                <div class="hidden">
-                    <h3 class="text-danger mb-3">¿No encuentras lo que buscas?</h3>
-                    <p class="lead mb-4">Contáctanos para obtener más información o sugerir nuevos recursos</p>
-                    <div class="d-flex justify-content-center gap-3 flex-wrap">
-                        <a href="/index.html#contacto" class="btn btn-ucsc">
-                            <i class="fas fa-envelope me-2"></i>Contactar
-                        </a>
-                        <a href="/index.html" class="btn btn-outline-secondary">
-                            <i class="fas fa-home me-2"></i>Volver al inicio
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-    </main>
-    <!-- Credencial Modal -->
-    <div id="modal-guia"></div>
-
-    <!-- Footer -->
-    <div id="footer-container"></div>
-
-    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-    <!--
-    <script type="module">
-        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-
-        createChat({
-            webhookUrl: 'https://n8n-304h.onrender.com/webhook/e8cd4f3f-76cc-4c22-943e-f60a7afb9091/chat',
-            title: 'JustiBot',
-            subtitle: 'Asistente Legal sobre Discapacidad',
-            initialMessages: ['👩‍⚖️ ¡Hola! Soy JustiBot. Estoy aquí para orientarte sobre leyes, derechos y recursos relacionados con la discapacidad en tu país.',
-                '💡 Puedes preguntarme sobre beneficios, educación inclusiva, accesibilidad y más. Si no sé la respuesta, te ayudaré a encontrarla.',
-                '¡Estoy aquí para ayudarte! 😊'
-            ],
-            description: '',
-            defaultLanguage: 'es',
-            i18n: {
-                es: {
-                    title: 'JustiBot👋',
-                    subtitle: 'Asistente Legal sobre Discapacidad',
-                    inputPlaceholder: '¿En qué puedo ayudarte?',
-                    sendButtonTooltip: 'Enviar',
-                }
-            }
-        });
+    createChat({
+    webhookUrl: 'https://n8n-304h.onrender.com/webhook/e8cd4f3f-76cc-4c22-943e-f60a7afb9091/chat',
+    title: 'JustiBot',
+    subtitle: 'Asistente Legal sobre Discapacidad',
+    initialMessages: ['👩‍⚖️ ¡Hola! Soy JustiBot. Estoy aquí para orientarte sobre leyes, derechos y recursos
+    relacionados con la discapacidad en tu país.',
+    '💡 Puedes preguntarme sobre beneficios, educación inclusiva, accesibilidad y más. Si no sé la respuesta, te ayudaré
+    a encontrarla.',
+    '¡Estoy aquí para ayudarte! 😊'
+    ],
+    description: '',
+    defaultLanguage: 'es',
+    i18n: {
+    es: {
+    title: 'JustiBot👋',
+    subtitle: 'Asistente Legal sobre Discapacidad',
+    inputPlaceholder: '¿En qué puedo ayudarte?',
+    sendButtonTooltip: 'Enviar',
+    }
+    }
+    });
     </script>
     -->
     <!-- Scripts -->
@@ -424,5 +56,6 @@
     <script src="/js/apoyo.js"></script>
     <script src="/js/accessibility-bar.js"></script>
 
-</body>
+    </body>
+
 </html>

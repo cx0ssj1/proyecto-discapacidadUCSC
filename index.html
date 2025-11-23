@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma Jurídica Inclusiva - UCSC</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- jQuery removed from head to avoid duplication and render blocking, kept in body end -->
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,8 @@
 
 </head>
 <body>
-    <div id="navbar-container"></div>
+    <a href="#main-content" class="skip-link visually-hidden-focusable">Saltar al contenido principal</a>
+    <div id="navbar-container" style="min-height: 80px;"></div>
 
      <div id="accessibility-bar-container"></div>
     
@@ -67,7 +68,7 @@
                                     <div class="col-md-6 p-5 bg-white d-flex align-items-center">
                                         <div class="text-center w-100">
                                             <i class="fas fa-chart-line text-primary-color mb-3" style="font-size: 4.5rem;"></i>
-                                            <h3 class="fw-bold text-primary-color mb-3">Evalúa tu Institución</h3>
+                                            <h2 class="fw-bold text-primary-color mb-3 h3">Evalúa tu Institución</h2>
                                             <p class="mb-4">Tu opinión es clave para construir un mapa de la inclusión en la educación superior. ¡Participa y ayúdanos a mejorar!</p>
                                             <a href="/pages/evalua.html" class="btn btn-ucsc btn-lg">
                                                 <i class="fas fa-pencil-alt me-2"></i>Evaluar ahora
@@ -326,7 +327,7 @@
             </div>
         </section>
     </main>
-    <div id="footer-container"></div>
+    <div id="footer-container" style="min-height: 200px;"></div>
     <div id="language-modal-container"></div>
     <div id="normativa-modal-container"></div>
     <div id="resource-modal-container"></div>

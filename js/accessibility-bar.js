@@ -4,7 +4,7 @@
  */
 (function () {
     window.addEventListener('componentsLoaded', () => {
-        
+
         const A11Y_SETTINGS_KEY = 'ucscA11ySettings';
 
         const elements = {
@@ -21,7 +21,7 @@
             console.error('Error Crítico: El evento "componentsLoaded" se disparó, pero el elemento #accessibility-bar sigue sin encontrarse en el DOM.');
             return;
         }
-        
+
         console.log('Componentes cargados. Barra de accesibilidad inicializada.');
 
         const state = {
@@ -62,58 +62,6 @@
             saveSetting('highContrast', isActive);
         }
 
-        function stopReading() {
-            state.speechSynthesis.cancel();
-            if (state.currentlyReadingElement) {
-                state.currentlyReadingElement.classList.remove('reading-highlight');
-            }
-            state.isReading = false;
-            if (elements.readPageBtn) {
-                elements.readPageBtn.classList.remove('active');
-                elements.readPageBtn.querySelector('span').textContent = 'Leer';
-            }
-            state.readingPlaylist = [];
-            state.currentReadingIndex = -1;
-            state.currentlyReadingElement = null;
-        }
-
-        function playNextInPlaylist() {
-            if (state.currentlyReadingElement) {
-                state.currentlyReadingElement.classList.remove('reading-highlight');
-            }
-            state.currentReadingIndex++;
-            if (state.currentReadingIndex >= state.readingPlaylist.length) {
-                stopReading();
-                return;
-            }
-            const elementToRead = state.readingPlaylist[state.currentReadingIndex];
-            state.currentlyReadingElement = elementToRead;
-            const textToRead = elementToRead.innerText;
-            const utterance = new SpeechSynthesisUtterance(textToRead);
-            utterance.lang = 'es-CL';
-            utterance.rate = 0.9;
-            utterance.onstart = () => {
-                elementToRead.classList.add('reading-highlight');
-                elementToRead.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            };
-            utterance.onend = playNextInPlaylist;
-            utterance.onerror = playNextInPlaylist; // En caso de error, simplemente salta al siguiente
-            state.speechSynthesis.speak(utterance);
-        }
-
-        function startReading() {
-            if (!elements.mainContent) {
-                console.warn('No se encontró contenido principal para leer.');
-                return;
-            }
-            state.isReading = true;
-            elements.readPageBtn.classList.add('active');
-            elements.readPageBtn.querySelector('span').textContent = 'Detener';
-            const readableElements = elements.mainContent.querySelectorAll('h1, h2, h3, h4, p, li, [data-readable]');
-            state.readingPlaylist = Array.from(readableElements).filter(el => el.innerText.trim().length > 10);
-            state.currentReadingIndex = -1;
-            playNextInPlaylist();
-        }
 
         function handleSpeechToggle() {
             if (state.isReading) {
